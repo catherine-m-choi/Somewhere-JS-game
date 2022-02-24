@@ -24,7 +24,9 @@ In addition, this project will include:
 Technologies used:
 
 - Javascript for the game logic
-- Canvas for implementing player movement, monster movement, and rendering animation
+- `Canvas API` for implementing player movement, monster movement, and rendering animation
+- `Webpack` to bundle the source JavaScript code
+- `npm` to manage project dependencies
 - HTML and CSS for design
 
 Architecture:
