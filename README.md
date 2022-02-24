@@ -62,7 +62,9 @@ Day 4
 Day 5
 - Add additional rooms and work on level design. 
 - Add rooms that are not accessible without unlocking moves.
+- Focus on styling and finishing game design touches.
 
 Day 6
 - Add a title screen
 - Include basic tutorial guidelines
+- Deploy to GitHub pages.
