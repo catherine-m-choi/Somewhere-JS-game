@@ -1,0 +1,38 @@
+{
+  "name": "somewhere",
+  "version": "1.0.0",
+  "description": "## Background _Somewhere_ is a metroidvania game, where the player controls a character through different rooms to unlock new skills that will allow them to reach new areas to explore. Players can unlock new skills, meet friends, and discover new types of coffee to increase their maximum health.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catherine-M-Choi/somewhere.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Catherine-M-Choi/somewhere/issues"
+  },
+  "homepage": "https://github.com/Catherine-M-Choi/somewhere#readme",
+  "dependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
+    "core-js": "^3.21.1",
+    "css-loader": "^6.6.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
