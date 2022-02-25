@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const Player = require("./scripts/player.js");
   const Game = require("./scripts/game.js");
   const GameView = require("./scripts/game_view.js");
+  const TestLevel = require("./scripts/test_level.js");
 
   window.canvasEl = document.getElementById("game-canvas");
   window.ctx = canvasEl.getContext("2d");
@@ -10,6 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   window.Player = Player;
   window.Game = Game;
   window.GameView = GameView;
+  window.TestLevel = TestLevel;
 
   // const forestTiles = new Image();
   // forestTiles.src = '/src/assets/forest_tiles.png';
@@ -29,6 +31,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const g = new GameView(gameOptions)
   g.start();
+  window.g = g;
 
   console.log('DOM fully loaded and parsed');
 });

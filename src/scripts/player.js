@@ -30,8 +30,6 @@ class Player {
     //   false);
     // ctx.fill();
 
-    // const tempGirl = new Image();
-    // tempGirl.src = '/src/assets/temp_girl_sprite.png';
     ctx.drawImage(this.tempGirl, this.x_pos,this.y_pos- this.radius, this.width, this.height );
   
   }
