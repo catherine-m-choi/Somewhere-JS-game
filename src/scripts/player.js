@@ -4,7 +4,7 @@ class Player {
     this.radius = 20
     this.height = 32;      // Not currently being used. Maybe use later for hit-box
     this.width = 32;       
-    this.jumping = true;   // For checking jump. If currently jumping, cannot jump again/
+    this.jumping = false;   // For checking jump. If currently jumping, cannot jump again/
     this.jumpCount = 0;    // For adding in double jump. If
     this.x_pos = 300;      // temporary starting x_pos for demo
     this.y_pos = 100;      // temporary starting y_pos for demo
@@ -47,13 +47,13 @@ class Player {
     this.y_vel += 1.5
     this.y_vel *= this.friction
     this.y_pos += this.y_vel
-    console.log(this.x_pos)
-    console.log(this.y_pos)
 
     // Stop from going through bottom of screen. Refactor this later to check for collission detection and sit on top of tiles
     if (this.y_pos > this.game.DIM_Y - (this.radius * 2)) {
       this.y_pos = this.game.DIM_Y - 32;
       this.y_vel = 0;
+      this.jumping = false;
+      this.jumpCount = 0;
     }
   }
 
@@ -67,9 +67,11 @@ class Player {
   }
   
   jump () {
-    this.y_vel -= 20;
-    this.jumping = true;
-    this.jumpCount += 1;
+    if (this.jumping < 2) {
+      this.y_vel -= 20;
+      this.jumping = true;
+      this.jumpCount += 1;
+    }
   }
 }
 
