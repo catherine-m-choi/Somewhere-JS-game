@@ -10,7 +10,7 @@ class Game {
 
   draw(ctx) {
     ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-    this.player.draw(ctx)
+    this.player.draw(ctx);
     // this.player.go(dir)
   }
 

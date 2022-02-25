@@ -5,18 +5,30 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   window.canvasEl = document.getElementById("game-canvas");
   window.ctx = canvasEl.getContext("2d");
+  canvasEl.style.background = "url('/src/assets/bg_forest.png')"
   
   window.Player = Player;
   window.Game = Game;
   window.GameView = GameView;
 
+  // const forestTiles = new Image();
+  // forestTiles.src = '/src/assets/forest_tiles.png';
+  // forestTiles.addEventListener('load', function() {
+  //   ctx.drawImage(forestTiles, 0,0);
+  // }, false);
+  
+  // const forestBackground = new Image();
+  // forestBackground.src = '/src/assets/bg_forest.png';
+  // forestBackground.addEventListener('load', function() {
+  //   ctx.drawImage(forestBackground, 0,0);
+  // }, false);
+
   const gameOptions = {
-    dim: [1000, 750],
+    dim: [1280, 720],
   }
 
   const g = new GameView(gameOptions)
   g.start();
-  
 
   console.log('DOM fully loaded and parsed');
 });
