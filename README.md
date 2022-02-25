@@ -6,7 +6,7 @@ _Somewhere_ is a metroidvania game, where the player controls a character throug
 ## Functionality & MVP
 In _Somewhere_, users will be able to:
 - Start, pause, restart, and exit the game.
-- Move their character using either the W,S,A,D or Arrow keys
+- Move their character using either the W,A,S, D or Arrow keys
 - Jump with space bar and dash with the Shift key
 - Move between rooms
 
