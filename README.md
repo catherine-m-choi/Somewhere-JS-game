@@ -1,7 +1,7 @@
 # Somewhere
 
 ## Background
-_Somewhere_ is a metroidvania game, where the player controls a character through different rooms to unlock new skills that will allow them to reach new areas to explore. Players can unlock new skills, meet friends, and discover new types of coffee to increase their maximum health.
+_Somewhere_ is a metroidvania game, where the player controls a character through different rooms to unlock new skills that will allow them to reach new areas to explore. Players can unlock new skills, meet friends, and try new types of foods to increase their maximum health.
 
 ## Functionality & MVP
 In _Somewhere_, users will be able to:
