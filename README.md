@@ -41,11 +41,11 @@ Architecture:
 
 Day 1: 
 - Set up Canvas and template level design. 
-- Design basic player movement functionality.
+- Design basic character movement and physics (walk, jump, etc).
 - Template one level/room with a static window
 
 Day 2
-- Figure out basic character movement and physics (walk, jump, etc).
+- Add player movement sprites.
 - Add collision detection.
 - Add first enemy with basic attack.
 - Refactor to include health counter and attack damage for main character
