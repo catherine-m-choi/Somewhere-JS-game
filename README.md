@@ -35,7 +35,10 @@ Architecture:
 - moveable_character.js will hold all logic that characters such as the player and enemies share, such as object collision and physics
 - player.js handles all player based logic including control and player animations
 - monster.js handles the logic behind all the unique monsters' movement and attack pattern
-- skill.js handles the logic behind all the skills obtained by the player
+- skill.js handles the logic behind all the skills obtained by the pl!
+
+![Screen Shot 2022-02-25 at 5 28 05 PM](https://user-images.githubusercontent.com/59376544/155821844-530e2559-76f6-4076-a85e-4778de072825.png)
+
 
 ## Timeline
 
