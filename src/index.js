@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const Game = require("./scripts/game.js");
   const GameView = require("./scripts/game_view.js");
   const TestLevel = require("./scripts/test_level.js");
+  const Camera = require("./scripts/camera.js");
 
   window.canvasEl = document.getElementById("game-canvas");
   window.ctx = canvasEl.getContext("2d");
@@ -12,6 +13,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   window.Game = Game;
   window.GameView = GameView;
   window.TestLevel = TestLevel;
+  window.Camera = Camera;
 
   // const forestTiles = new Image();
   // forestTiles.src = '/src/assets/forest_tiles.png';

@@ -1,6 +1,7 @@
 class Player {
   constructor(params) {
     this.game = params["game"];
+    this.map = params["map"];
     this.radius = 40
     this.height = this.radius*2;      
     this.width = this.radius*2;       
@@ -18,23 +19,26 @@ class Player {
   }
 
   draw(ctx) {
-    ctx.drawImage(this.tempGirl, this.x_pos,this.y_pos- this.radius, this.width, this.height );
+    ctx.drawImage(this.tempGirl, this.screenX,this.y_pos- this.radius, this.width, this.height );
+    console.log(`sprite x_pos ${this.x_pos}`)
+    // update camera pos?
+    this.map.camera.update();
   }
 
   move(timeDelta) {
     const NORMAL_FRAME_TIME_DELTA = 20000 //1200 / 60;
-    const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
+    const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA;
 
     // horizontal movement
-    offsetX = this.x_vel * velocityScale,
-    offsetY = this.y_vel * velocityScale;
+    // offsetX = this.x_vel * velocityScale,
+    // offsetY = this.y_vel * velocityScale;
     
-    this.x_pos += offsetX;
+    this.x_pos += this.y_vel * velocityScale;
     this.x_vel *= this.friction
     this.x_pos += this.x_vel
     
     // vertical movement
-    this.y_pos += offsetY;
+    this.y_pos += this.y_vel * velocityScale;
 
     // gravity?
     this.y_vel += 1.5
@@ -43,13 +47,16 @@ class Player {
 
     // Stop from going through bottom of screen. 
     // Refactor this later to check for collission detection and sit on top of tiles
-    if (this.y_pos > this.game.DIM_Y - (this.radius * 2) - 160) {
+    if (this.y_pos > this.game.DIM_Y - (this.radius) - 160) {
       this.y_pos = this.game.DIM_Y - this.radius - 160; // 160 is two tiles. 
       // Placeholder for actual collision detection
       this.y_vel = 0;
       this.jumping = false;
       this.jumpCount = 0;
     }
+
+    // // update camera pos?
+    // this.map.camera.update();
   }
 
   updatePos(dir) {
@@ -63,7 +70,7 @@ class Player {
   
   jump () {
     if (this.jumpCount <= 1) {
-      this.y_vel -= 25;
+      this.y_vel -= 17 ;
       this.jumping = true;
       this.jumpCount += 1;
     } 

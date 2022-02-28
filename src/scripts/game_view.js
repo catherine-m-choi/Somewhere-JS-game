@@ -1,5 +1,4 @@
 const Game = require("./game.js");
-const Keymaster = require("./keymaster.js");
 
 class GameView {
   constructor(gameOptions) {
