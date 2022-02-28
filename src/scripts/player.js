@@ -18,24 +18,11 @@ class Player {
   }
 
   draw(ctx) {
-    // Temporarily represented as circle. Will later refactor to be a sprite
-    // ctx.fillStyle = "#031cfc";
-    // ctx.beginPath();
-    // ctx.arc(
-    //   this.x_pos,
-    //   this.y_pos,
-    //   this.radius,
-    //   0,
-    //   2 * Math.PI,
-    //   false);
-    // ctx.fill();
-
     ctx.drawImage(this.tempGirl, this.x_pos,this.y_pos- this.radius, this.width, this.height );
-  
   }
 
   move(timeDelta) {
-    const NORMAL_FRAME_TIME_DELTA = 1200 / 60;
+    const NORMAL_FRAME_TIME_DELTA = 20000 //1200 / 60;
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
 
     // horizontal movement
@@ -54,9 +41,11 @@ class Player {
     this.y_vel *= this.friction
     this.y_pos += this.y_vel
 
-    // Stop from going through bottom of screen. Refactor this later to check for collission detection and sit on top of tiles
-    if (this.y_pos > this.game.DIM_Y - (this.radius * 2)) {
-      this.y_pos = this.game.DIM_Y - this.radius;
+    // Stop from going through bottom of screen. 
+    // Refactor this later to check for collission detection and sit on top of tiles
+    if (this.y_pos > this.game.DIM_Y - (this.radius * 2) - 160) {
+      this.y_pos = this.game.DIM_Y - this.radius - 160; // 160 is two tiles. 
+      // Placeholder for actual collision detection
       this.y_vel = 0;
       this.jumping = false;
       this.jumpCount = 0;
@@ -67,17 +56,17 @@ class Player {
     let [dirX, dirY] = dir
 
     // horizontal movement
-    this.x_vel +=  1.5 * dirX 
+    this.x_vel +=  dirX / 60
     this.x_pos += this.x_vel
     // this.x_vel *= this.friction
   }
   
   jump () {
-    if (this.jumping < 2) {
-      this.y_vel -= this.height / 3;
+    if (this.jumpCount <= 1) {
+      this.y_vel -= 25;
       this.jumping = true;
       this.jumpCount += 1;
-    }
+    } 
   }
 }
 

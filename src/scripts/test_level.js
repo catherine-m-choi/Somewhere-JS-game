@@ -70,8 +70,6 @@ class TestLevel {
             this.outputSize, // target width
             this.outputSize // target height
           );
-
-          console.log((tile - 1) * this.sourceSize)
         }
       }
     }

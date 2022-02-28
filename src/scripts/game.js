@@ -1,5 +1,6 @@
 const Player = require("./player");
 const TestLevel = require("./test_level");
+// const Controller = require("./controller.js");
 
 class Game {
   constructor(options) {
@@ -8,6 +9,24 @@ class Game {
     this.player = new Player({game: this})
     this.bullets = [];
     this.currentLevel = new TestLevel();
+
+    this.keys = {
+      'ArrowLeft' : false,
+      'ArrowRight' : false,
+      'a': false,
+      'd': false,
+      " ": false
+    };
+
+    window.addEventListener("keydown", (e) => {
+      e.preventDefault();
+      this.keys[e.key] = true;
+    });
+  
+    window.addEventListener("keyup", (e) => {
+      e.preventDefault();
+      this.keys[e.key] = false;
+    });
   }
 
   draw(ctx) {
@@ -15,12 +34,25 @@ class Game {
     this.currentLevel.render(ctx);
     this.currentLevel.renderForeground(ctx);
     this.player.draw(ctx);
-    // this.player.go(dir)
+    this.executeMoves();
   }
 
   step(delta) {
     this.player.move(delta);
-    console.log("stepping")
+  }
+
+  executeMoves() {
+    Object.keys(this.keys).forEach(key=> {
+      if (this.keys['ArrowLeft'] || this.keys["a"]) {
+        this.player.updatePos([-1,0]);
+      }
+      if (this.keys['ArrowRight'] || this.keys["d"]) {
+        this.player.updatePos([1,0])
+      }
+      if (this.keys[' ']) {
+        this.player.jump()
+      }
+    })
   }
   
 }
