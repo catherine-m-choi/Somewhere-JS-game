@@ -20,8 +20,6 @@ class Player {
 
   draw(ctx) {
     ctx.drawImage(this.tempGirl, this.screenX,this.y_pos- this.radius, this.width, this.height );
-    console.log(`sprite x_pos ${this.x_pos}`)
-    // update camera pos?
     this.map.camera.update();
   }
 
@@ -48,7 +46,7 @@ class Player {
     // Placeholder for actual collision detection
     // Stop from going through bottom of screen. 
     // Refactor this later to check for collission detection and sit on top of tiles
-    
+
     if (this.y_pos > this.game.DIM_Y - (this.radius) - 160) {
       this.y_pos = this.game.DIM_Y - this.radius - 160; // 160 is two tiles. 
       this.y_vel = 0;

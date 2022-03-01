@@ -92,8 +92,6 @@ class TestLevel {
     let offsetX = startCol * this.outputSize - this.camera.cam_x;
     let offsetY = startRow * this.outputSize - this.camera.cam_y;
     
-    console.log(this.camera)
-
     for (var c = startCol; c <= endCol; c++) {
       for (var r = startRow; r <= endRow; r++) {
         let tile = this.getTile(c, r);

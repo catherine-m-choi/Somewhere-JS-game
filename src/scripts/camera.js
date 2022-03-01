@@ -23,7 +23,6 @@ class Camera {
     this.cam_x = this.following.x_pos - this.width / 3;
     this.cam_y = this.following.y_pos - this.height / 3;
 
-    console.log(`max X: ${this.maxX}`)
     this.cam_x = Math.max(0, Math.min(this.following.x_pos, this.maxX));
     this.cam_y = Math.max(0, Math.min(this.following.y_pos, this.maxY));
 
