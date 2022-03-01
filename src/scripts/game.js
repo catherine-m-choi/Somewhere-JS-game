@@ -1,7 +1,5 @@
 const Player = require("./player");
-const TestLevel = require("./test_level");
-
-// const Controller = require("./controller.js");
+const TestLevel = require("./levels/test_level");
 
 class Game {
   constructor(options) {
@@ -48,9 +46,11 @@ class Game {
     Object.keys(this.keys).forEach(key=> {
       if (this.keys['ArrowLeft'] || this.keys["a"]) {
         this.player.moveHorizontal([-1,0]);
+        this.player.flip = true;
       }
       if (this.keys['ArrowRight'] || this.keys["d"]) {
-        this.player.moveHorizontal([1,0])
+        this.player.moveHorizontal([1,0]);
+        this.player.flip = false;
       }
       if (this.keys[' ']) {
         this.player.jump()

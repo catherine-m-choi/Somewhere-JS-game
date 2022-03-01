@@ -36,7 +36,6 @@ class Camera {
       this.following.screenX = this.following.x_pos - this.maxX;
     }
     // Will add up and down camera positioning later
-    console.log(`Cam x: ${this.cam_x}`)
   }
 
 }

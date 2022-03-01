@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const Player = require("./scripts/player.js");
   const Game = require("./scripts/game.js");
   const GameView = require("./scripts/game_view.js");
-  const TestLevel = require("./scripts/test_level.js");
+  const TestLevel = require("./scripts/levels/test_level.js");
   const Camera = require("./scripts/camera.js");
 
   window.canvasEl = document.getElementById("game-canvas");
