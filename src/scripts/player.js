@@ -45,11 +45,12 @@ class Player {
     this.y_vel *= this.friction
     this.y_pos += this.y_vel
 
+    // Placeholder for actual collision detection
     // Stop from going through bottom of screen. 
     // Refactor this later to check for collission detection and sit on top of tiles
+    
     if (this.y_pos > this.game.DIM_Y - (this.radius) - 160) {
       this.y_pos = this.game.DIM_Y - this.radius - 160; // 160 is two tiles. 
-      // Placeholder for actual collision detection
       this.y_vel = 0;
       this.jumping = false;
       this.jumpCount = 0;

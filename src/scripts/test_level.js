@@ -9,24 +9,13 @@ class TestLevel {
     this.rows = 9;
     this.sourceSize = 128;
     this.outputSize = 80;
-    // this.tiles = [
-    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    //   0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0,
-    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0,
-    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    //   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-    //   13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13
-    //   ];
     this.tiles = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 7, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
       13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 
@@ -72,6 +61,8 @@ class TestLevel {
   }
 
   renderForeground(ctx) {
+    // static version. Later refactor to allow scrolling foreground with slower speed than main render layer: 
+
     for (let c = 0; c < this.cols; c++) {
       for (let r = 0; r < this.rows; r++) {
         let tile = this.getForegroundTile(c, r);
@@ -94,28 +85,6 @@ class TestLevel {
   }
 
   render(ctx) {
-    // for (let c = 0; c < this.cols; c++) {
-    //   for (let r = 0; r < this.rows; r++) {
-    //     let tile = this.getTile(c, r);
-    //     if (tile !== 0) { // 0 => empty tile
-    //       // Example of ctx.drawImage syntax:
-    //       // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-    //       let [x_pos,y_pos] = this.getStartingPos(tile)
-    //       ctx.drawImage(
-    //         this.tileAtlas, // image
-    //         x_pos, 
-    //         y_pos,
-    //         this.sourceSize, // source width
-    //         this.sourceSize, // source height
-    //         c * this.outputSize,  // target x
-    //         r * this.outputSize, // target y
-    //         this.outputSize, // target width
-    //         this.outputSize // target height
-    //       );
-    //     }
-    //   }
-    // }
-
     let startCol = Math.floor(this.camera.cam_x / this.outputSize);
     let endCol = startCol + (this.camera.width / this.outputSize);
     let startRow = Math.floor(this.camera.cam_y / this.outputSize);
