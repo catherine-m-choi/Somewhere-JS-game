@@ -10,8 +10,8 @@ class Camera {
 
   follow(player) {
     this.following = player;
-    player.screenX = 0;
-    player.screenY = 0;
+    player.screenX = player.x_pos;
+    player.screenY = player.y_pos;
   }
 
   update() {
@@ -21,21 +21,22 @@ class Camera {
 
     // Camera follows player sprite
     this.cam_x = this.following.x_pos - this.width / 3;
-    this.cam_y = this.following.y_pos - this.height / 3;
+    this.cam_y = this.following.y_pos
 
-    this.cam_x = Math.max(0, Math.min(this.following.x_pos, this.maxX));
-    this.cam_y = Math.max(0, Math.min(this.following.y_pos, this.maxY));
+    this.cam_x = Math.max(0, Math.min(this.cam_x, this.maxX));
+    this.cam_y = Math.max(0, Math.min(this.cam_y, this.maxY));
 
     // Edges of level
     // left edge
     if (this.following.x_pos < this.width / 3) {
-      this.following.screenX = this.following.x_pos;
+      this.following.screenX = this.following.x_pos - this.cam_x;
     }
     // right edge
-    if (this.following.x_pos > this.maxX) {
-      this.following.screenX = this.following.x_pos - this.maxX + this.width / 3;
+    if (this.following.x_pos > (this.maxX + this.width / 3)) {
+      this.following.screenX = this.following.x_pos - this.maxX;
     }
     // Will add up and down camera positioning later
+    console.log(`Cam x: ${this.cam_x}`)
   }
 
 }

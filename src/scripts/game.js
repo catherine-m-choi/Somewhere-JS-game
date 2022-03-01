@@ -47,10 +47,10 @@ class Game {
   executeMoves() {
     Object.keys(this.keys).forEach(key=> {
       if (this.keys['ArrowLeft'] || this.keys["a"]) {
-        this.player.updatePos([-1,0]);
+        this.player.moveHorizontal([-1,0]);
       }
       if (this.keys['ArrowRight'] || this.keys["d"]) {
-        this.player.updatePos([1,0])
+        this.player.moveHorizontal([1,0])
       }
       if (this.keys[' ']) {
         this.player.jump()

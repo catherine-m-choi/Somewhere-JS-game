@@ -4,7 +4,7 @@ class TestLevel {
   constructor(dimX, dimY) {
     // Canvas size is 1280 x 720
     // forest_tiles.png is 896 × 384; Individual tile is 128 x 128 in source
-    // 16 tiles wide and 9 tiles high, with tile size of 80 x 80
+    // Screen is 16 tiles wide and 9 tiles high, with tile size of 80 x 80
     this.cols = 46;
     this.rows = 9;
     this.sourceSize = 128;
@@ -15,11 +15,22 @@ class TestLevel {
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 7, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 16, 7, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 7, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
       13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 
       ];
+    // this.tiles = [
+    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //   0, 16, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    //   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+    //   13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 
+    //   ];
     this.foregroundTiles = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -42,10 +53,15 @@ class TestLevel {
     this.dimY = dimY;
     this.camera = new Camera(this.cols, this.rows, this.outputSize, dimX, dimY);
 
-    // for background rendering
+    // Image for background rendering
     this.background = new Image();
     this.background.src = './src/assets/bg_forest.png';
     this.imgWidth = 0;
+
+    // Image for foreground rendering
+    this.foreground = new Image();
+    this.foreground.src = './src/assets/foreground_wave.png';
+    this.foregroundImgWidth = 0;
   }
   
   getTile(col, row) {
@@ -67,33 +83,76 @@ class TestLevel {
 
   renderForeground(ctx) {
     // static version. Later refactor to allow scrolling foreground with slower speed than main render layer: 
+    
+    // for (let c = 0; c < this.cols; c++) {
+    //   for (let r = 0; r < this.rows; r++) {
+    //     let tile = this.getForegroundTile(c, r);
+    //     if (tile !== 0) { // 0 => empty tile
+    //       let [x_pos,y_pos] = this.getStartingPos(tile)
+    //       ctx.drawImage(
+    //         this.tileAtlas, // image
+    //         x_pos, 
+    //         y_pos,
+    //         this.sourceSize, // source width
+    //         this.sourceSize, // source height
+    //         c * this.outputSize,  // target x
+    //         r * this.outputSize, // target y
+    //         this.outputSize, // target width
+    //         this.outputSize // target height
+    //       );
+    //     }
+    //   }
+    // }
 
-    for (let c = 0; c < this.cols; c++) {
-      for (let r = 0; r < this.rows; r++) {
-        let tile = this.getForegroundTile(c, r);
-        if (tile !== 0) { // 0 => empty tile
-          let [x_pos,y_pos] = this.getStartingPos(tile)
-          ctx.drawImage(
-            this.tileAtlas, // image
-            x_pos, 
-            y_pos,
-            this.sourceSize, // source width
-            this.sourceSize, // source height
-            c * this.outputSize,  // target x
-            r * this.outputSize, // target y
-            this.outputSize, // target width
-            this.outputSize // target height
-          );
-        }
-      }
+    // scrolling tile version. Speed based on character's horizontal velocity
+    // let startCol = Math.floor(this.camera.cam_x / this.outputSize);
+    // let endCol = startCol + (this.camera.width / this.outputSize);
+    // let startRow = Math.floor(this.camera.cam_y / this.outputSize);
+    // let endRow = startRow + (this.camera.height / this.outputSize);
+    // let offsetX = startCol * this.outputSize - this.camera.cam_x;
+    // let offsetY = startRow * this.outputSize - this.camera.cam_y;
+    
+    // for (let c = startCol; c <= endCol; c++) {
+    //   for (let r = startRow; r <= endRow; r++) {
+    //     let tile = this.getForegroundTile(c, r);
+    //     let [x_pos,y_pos] = this.getStartingPos(tile)
+        
+    //     let x = (c - startCol) * this.outputSize + offsetX;
+    //     let y = (r - startRow) * this.outputSize + offsetY;
+
+    //     if (tile !== 0) { // 0 => empty tile
+    //       ctx.drawImage(
+    //         this.tileAtlas, // image
+    //         x_pos, // source x
+    //         y_pos, // source y
+    //         this.sourceSize, // source width
+    //         this.sourceSize, // source height
+    //         Math.round(x),  // target x
+    //         Math.round(y), // target y
+    //         this.outputSize, // target width
+    //         this.outputSize // target height
+    //       );
+    //     }
+    //   }
+    // }
+
+    let imageSpeed = 1;
+
+    ctx.drawImage(this.foreground, this.foregroundImgWidth, this.dimY - 80);
+    //image2
+    ctx.drawImage(this.foreground, this.foregroundImgWidth + this.dimX, this.dimY - 80);
+    this.foregroundImgWidth -= imageSpeed
+
+    if (this.foregroundImgWidth <= -2048) {
+      this.foregroundImgWidth = 0;
     }
   }
 
   render(ctx) {
     let startCol = Math.floor(this.camera.cam_x / this.outputSize);
-    let endCol = startCol + (this.camera.width / this.outputSize);
+    let endCol = startCol + (this.dimX / this.outputSize);
     let startRow = Math.floor(this.camera.cam_y / this.outputSize);
-    let endRow = startRow + (this.camera.height / this.outputSize);
+    let endRow = startRow + (this.dimY / this.outputSize);
     let offsetX = startCol * this.outputSize - this.camera.cam_x;
     let offsetY = startRow * this.outputSize - this.camera.cam_y;
     
@@ -108,12 +167,12 @@ class TestLevel {
         if (tile !== 0) { // 0 => empty tile
           ctx.drawImage(
             this.tileAtlas, // image
-            x_pos, // source x
-            y_pos, // source y
+            x_pos, // source x to start clipping
+            y_pos, // source y to start clipping
             this.sourceSize, // source width
             this.sourceSize, // source height
-            Math.round(x),  // target x
-            Math.round(y), // target y
+            Math.round(x),  // target x to place on the canvas
+            Math.round(y), // target y to place on the canvas
             this.outputSize, // target width
             this.outputSize // target height
           );
@@ -137,17 +196,34 @@ class TestLevel {
     }
 
     //image 1
-    ctx.drawImage(this.background, this.imgWidth, 0);
+    ctx.drawImage(this.background, this.imgWidth, -40);
     //image2
-    ctx.drawImage(this.background, this.imgWidth + this.dimX, 0);
+    ctx.drawImage(this.background, this.imgWidth + this.dimX, -40);
     this.imgWidth -= imageSpeed
   
     // reseting the images when the first image entirely exits the screen
-    if (this.imgWidth == this.dimX) {
+    if (this.imgWidth <= (-1 * this.dimX)) {
       this.imgWidth = 0;
     }
-
   }
+
+  // Tested collision using pos 0, 560 (when the floor starts)
+  solidTile(xPos, yPos) {
+    let tileMapCol = Math.floor(xPos / this.outputSize);
+    let tileMapRow = Math.floor(yPos / this.outputSize);
+    let tile = this.getTile(tileMapCol, tileMapRow);
+
+    return (tile !== 0);
+  }
+
+  getRowCol(num) {
+    return Math.floor(num / this.outputSize);
+  }
+
+  getNum(num) {
+    return num * this.outputSize;
+  }
+
 }
 
 module.exports = TestLevel;
