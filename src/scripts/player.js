@@ -9,8 +9,8 @@ class Player {
     this.jumpCount = 0;    // For adding in double jump. If
     this.x_pos = 300;      // temporary starting x_pos for demo
     this.y_pos = 100;      // temporary starting y_pos for demo
-    this.x_vel = 0;
-    this.y_vel = 0;
+    this.x_vel = 0;     // set bottom limit later; set upper limit later
+    this.y_vel = 0;     
 
     this.friction = .95
 

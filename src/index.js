@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   window.canvasEl = document.getElementById("game-canvas");
   window.ctx = canvasEl.getContext("2d");
 
-  canvasEl.style.background = "url('../src/assets/bg_forest.png')"
+  // canvasEl.style.background = "url('../src/assets/bg_forest.png')"
   
   // for testing in console
   window.Player = Player;

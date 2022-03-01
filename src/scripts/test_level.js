@@ -37,10 +37,15 @@ class TestLevel {
     this.tileAtlas = new Image();
     this.tileAtlas.src = './src/assets/forest_tiles.png';
 
+    // for camera
     this.dimX = dimX;
     this.dimY = dimY;
-
     this.camera = new Camera(this.cols, this.rows, this.outputSize, dimX, dimY);
+
+    // for background rendering
+    this.background = new Image();
+    this.background.src = './src/assets/bg_forest.png';
+    this.imgWidth = 0;
   }
   
   getTile(col, row) {
@@ -115,6 +120,33 @@ class TestLevel {
         }
       }
     }
+  }
+
+  renderBackground(ctx, playerXVel, playerXPos) {
+    let imageSpeed;
+    let maxX = this.cols * this.outputSize - this.dimX
+    // Edges of level should not have parallax
+
+    // left edge
+    if (playerXPos < this.dimX / 3) {
+      imageSpeed = 0;
+    } else if (playerXPos > maxX) { // right edge
+      imageSpeed = 0
+    } else {
+      imageSpeed = playerXVel;
+    }
+
+    //image 1
+    ctx.drawImage(this.background, this.imgWidth, 0);
+    //image2
+    ctx.drawImage(this.background, this.imgWidth + this.dimX, 0);
+    this.imgWidth -= imageSpeed
+  
+    // reseting the images when the first image entirely exits the screen
+    if (this.imgWidth == this.dimX) {
+      this.imgWidth = 0;
+    }
+
   }
 }
 

@@ -33,6 +33,7 @@ class Game {
 
   draw(ctx) {
     ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+    this.currentLevel.renderBackground(ctx, this.player.x_vel, this.player.x_pos)
     this.currentLevel.render(ctx);
     this.player.draw(ctx);
     this.currentLevel.renderForeground(ctx);
