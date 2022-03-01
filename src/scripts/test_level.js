@@ -35,7 +35,7 @@ class TestLevel {
     this.inputRows = 3;
     this.inputCols = 7;
     this.tileAtlas = new Image();
-    this.tileAtlas.src = '/src/assets/forest_tiles.png';
+    this.tileAtlas.src = './src/assets/forest_tiles.png';
 
     this.dimX = dimX;
     this.dimY = dimY;
@@ -92,8 +92,8 @@ class TestLevel {
     let offsetX = startCol * this.outputSize - this.camera.cam_x;
     let offsetY = startRow * this.outputSize - this.camera.cam_y;
     
-    for (var c = startCol; c <= endCol; c++) {
-      for (var r = startRow; r <= endRow; r++) {
+    for (let c = startCol; c <= endCol; c++) {
+      for (let r = startRow; r <= endRow; r++) {
         let tile = this.getTile(c, r);
         let [x_pos,y_pos] = this.getStartingPos(tile)
         

@@ -15,7 +15,7 @@ class Player {
     this.friction = .95
 
     this.tempGirl = new Image();
-    this.tempGirl.src = '/src/assets/temp_girl_sprite.png';
+    this.tempGirl.src = './src/assets/temp_girl_sprite.png';
   }
 
   draw(ctx) {
