@@ -6,35 +6,43 @@ class Player {
     this.height = this.radius*2;      
     this.width = this.radius*2;       
     this.jumpCount = 0;    // For checking jump. If currently jumping (jumpCount > 1), cannot jump again/
-                           //For adding in double jump. If
+    //For adding in double jump. If
     this.lastJump = Date.now() - 1000;
     this.jumpInterval = 400;
     this.x_pos = 100;      // temporary starting x_pos for demo
     this.y_pos = 100;      // temporary starting y_pos for demo
-    this.x_vel = 0;     // set bottom limit later; set upper limit later
+    this.x_vel = 0;     // set upper and bottom limit later
     this.y_vel = 0;     
-
+    
     this.friction = .95
-
-    this.tempGirl = new Image();
-    this.tempGirl.src = './src/assets/temp_girl_sprite.png';
     
     // sprite animations:
     this.flip = false;
     // 2080 × 1816 | 5 cols and 4 rows | each sprite is 416 x 454
     this.girlRunning = new Image();
-    this.girlRunning.src = './src/assets/girl_running.png';
+    this.girlRunning.src = './src/assets/sprites/girl/girl_running.png';
     this.currentRunningFrame = 1;
-
+    
     // 1664 × 1816 | 4 cols and 4 rows | each sprite is 416 x 454
     this.girlIdling = new Image();
-    this.girlIdling.src = './src/assets/girl_idling.png';
+    this.girlIdling.src = './src/assets/sprites/girl/girl_idling.png';
     this.currentIdleFrame = 1;
-
+    
     // 3606 × 2510 | 6 cols and 5 rows | each sprite is 601 x 502
     this.girlDying = new Image();
-    this.girlDying.src = './src/assets/girl_dying.png';
+    this.girlDying.src = './src/assets/sprites/girl/girl_dying.png';
     this.currentDyingFrame = 1;
+    
+    // 729 × 261 | 2 cols and 1 rows | each sprite is 364.5 x 261
+    this.maxHealth = 8;
+    this.currentHealth = 5;
+    this.healthBar = new Image();
+    this.healthBar.src = './src/assets/sprites/girl/heart_border.png';
+
+    // 447 × 448
+    this.numCoins = 10;
+    this.coinImg = new Image();
+    this.coinImg.src = './src/assets/sprites/coin/star_coin_counter.png';
   }
 
   // getting starting position from sprite sheet
@@ -111,6 +119,65 @@ class Player {
         targetHeight // target height
         );
       }
+  }
+
+  // 729 × 261 | 2 cols and 1 rows | each sprite is 364.5 x 261
+  drawHealth(ctx) {
+    let emptyHealth = this.maxHealth - this.currentHealth;
+    let firstFullHeartXPos = 20;
+    
+    for (let i = 0; i < this.currentHealth; i++) {
+      if (i === 0) {
+        ctx.drawImage(
+          this.healthBar, // image
+          0, // source x to start clipping
+          0,  // source y to start clipping
+          364.5, // source width
+          261, // source height
+          firstFullHeartXPos,  // target x to place on the canvas
+          20, // target y to place on the canvas
+          88, // target width
+          64 // target height
+          );
+        firstFullHeartXPos += 88
+      } else {
+        ctx.drawImage(
+          this.healthBar, // image
+          0, // source x to start clipping
+          0,  // source y to start clipping
+          364.5, // source width
+          261, // source height
+          firstFullHeartXPos,  // target x to place on the canvas
+          20, // target y to place on the canvas
+          55, // target width
+          40 // target height
+          );
+        firstFullHeartXPos += 55
+      }
+    }
+
+    let firstEmptyHeartXPos = firstFullHeartXPos;
+        
+    for (let i = 0; i < emptyHealth; i++) {
+      ctx.drawImage(
+        this.healthBar, // image
+        364.5, // source x to start clipping
+        0,  // source y to start clipping
+        364.5, // source width
+        261, // source height
+        firstEmptyHeartXPos,  // target x to place on the canvas
+        20, // target y to place on the canvas
+        55, // target width
+        40 // target height
+      );
+      firstEmptyHeartXPos += 55
+    }
+
+  }
+
+  drawCoinCounter(ctx) {
+    ctx.drawImage(this.coinImg, 105, 70, 40, 40);
+
   }
 
   move(timeDelta) {

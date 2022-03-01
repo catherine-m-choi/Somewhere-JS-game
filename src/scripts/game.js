@@ -34,6 +34,8 @@ class Game {
     this.currentLevel.renderBackground(ctx, this.player.x_vel, this.player.x_pos)
     this.currentLevel.render(ctx);
     this.player.draw(ctx);
+    this.player.drawHealth(ctx);
+    this.player.drawCoinCounter(ctx)
     this.currentLevel.renderForeground(ctx);
     this.executeMoves();
   }
