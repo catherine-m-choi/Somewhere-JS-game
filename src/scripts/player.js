@@ -178,7 +178,8 @@ class Player {
   drawCoinCounter(ctx) {
     ctx.drawImage(this.coinImg, 105, 70, 40, 40);
 
-    ctx.font = "bold 30px Helvetica";
+    // ctx.font = "bold 30px Helvetica";
+    ctx.font = "30px Montserrat";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.textAlign = "left"

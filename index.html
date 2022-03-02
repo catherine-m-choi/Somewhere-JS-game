@@ -4,12 +4,23 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="./dist/main.js"></script>
   <title>Somewhere</title>
 </head>
 <body>
   <h1>Somewhere...</h1>
-  <canvas id="game-canvas" width="1280" height="720">
+  <canvas id="game-canvas" width="1280" height="720"></canvas>
+
+  <div class="audio-buttons">
+    <button onclick="document.getElementById('temp-song').play()" type="button">Play Audio</button>
+    <button onclick="document.getElementById('temp-song').pause()" type="button">Pause Audio</button>
+  </div>
+
+  <audio
+    id="temp-song"
+    src="./src/assets/music/cakeflaps_good_morning.wav">
+  </audio>
 </body>
 </html>
