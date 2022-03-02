@@ -34,13 +34,13 @@ class Player {
     this.currentDyingFrame = 1;
     
     // 729 × 261 | 2 cols and 1 rows | each sprite is 364.5 x 261
-    this.maxHealth = 8;
-    this.currentHealth = 5;
+    this.maxHealth = 8;         // Temp test placeholder value
+    this.currentHealth = 5;     // Temp test placeholder value
     this.healthBar = new Image();
     this.healthBar.src = './src/assets/sprites/girl/heart_border.png';
 
     // 447 × 448
-    this.numCoins = 10;
+    this.numCoins = 123456789; // Temp test placeholder value
     this.coinImg = new Image();
     this.coinImg.src = './src/assets/sprites/coin/star_coin_counter.png';
   }
@@ -178,6 +178,14 @@ class Player {
   drawCoinCounter(ctx) {
     ctx.drawImage(this.coinImg, 105, 70, 40, 40);
 
+    ctx.font = "bold 30px Helvetica";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "left"
+
+    ctx.fillStyle = "#525252";
+    ctx.fillText(this.numCoins.toLocaleString('en-US'), 155, 90)
+    // ctx.fillText(this.numCoins, x + boxWidth / 2 +  padding, y + padding + size / 2 + size / 16);
   }
 
   move(timeDelta) {
