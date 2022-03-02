@@ -46,12 +46,12 @@ class Player {
   }
 
   // getting starting position from sprite sheet
-  getStartingPos(tileNum, frameSouceWidth, frameSouceHeight, numColSheet) {
+  getStartingPos(tileNum, frameSourceWidth, frameSourceHeight, numColSheet) {
     let row = Math.floor((tileNum - 1) / numColSheet); // Num of columns in sprite sheet
     let col = (tileNum % numColSheet) || numColSheet;
     
-    let x = (col - 1) * frameSouceWidth;
-    let y = row * frameSouceHeight;
+    let x = (col - 1) * frameSourceWidth;
+    let y = row * frameSourceHeight;
     return [x, y];
   }
 
@@ -117,8 +117,8 @@ class Player {
         this.y_pos- this.radius, // target y to place on the canvas
         targetWidth, // target width
         targetHeight // target height
-        );
-      }
+      );
+    }
   }
 
   // 729 × 261 | 2 cols and 1 rows | each sprite is 364.5 x 261

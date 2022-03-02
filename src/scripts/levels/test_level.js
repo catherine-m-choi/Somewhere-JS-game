@@ -1,4 +1,6 @@
 const Camera = require("../camera");
+const Coin = require("../collectibles/coin");
+const TallTree = require("../non_interactive_objects/tall_tree")
 
 class TestLevel {
   constructor(dimX, dimY) {
@@ -51,6 +53,16 @@ class TestLevel {
     this.foreground = new Image();
     this.foreground.src = './src/assets/backgrounds/foreground_wave.png';
     this.foregroundImgWidth = 0;
+    this.levelCollectibles = [
+      new Coin({map: this, pos: [300,500], camera: this.camera}),
+      new Coin({map: this, pos: [340,500], camera: this.camera}), 
+      new Coin({map: this, pos: [380,500],  camera: this.camera})
+    ];
+    this.backgroundObjects = [
+      new TallTree({map: this, pos: [300,382], camera: this.camera}),
+      new TallTree({map: this, pos: [400,370], camera: this.camera}),
+      new TallTree({map: this, pos: [1050,382], camera: this.camera})
+    ];
   }
   
   getTile(col, row) {
@@ -70,61 +82,19 @@ class TestLevel {
     return [x_pos, y_pos]
   }
 
+  drawObjects(ctx) {
+    this.levelCollectibles.forEach((ele) => {
+      ele.draw(ctx);
+    })
+  }
+
+  drawBackgroundObjects(ctx) {
+    this.backgroundObjects.forEach((ele) => {
+      ele.draw(ctx);
+    })
+  }
+
   renderForeground(ctx) {
-    // static version. Later refactor to allow scrolling foreground with slower speed than main render layer: 
-    
-    // for (let c = 0; c < this.cols; c++) {
-    //   for (let r = 0; r < this.rows; r++) {
-    //     let tile = this.getForegroundTile(c, r);
-    //     if (tile !== 0) { // 0 => empty tile
-    //       let [x_pos,y_pos] = this.getStartingPos(tile)
-    //       ctx.drawImage(
-    //         this.tileAtlas, // image
-    //         x_pos, 
-    //         y_pos,
-    //         this.sourceSize, // source width
-    //         this.sourceSize, // source height
-    //         c * this.outputSize,  // target x
-    //         r * this.outputSize, // target y
-    //         this.outputSize, // target width
-    //         this.outputSize // target height
-    //       );
-    //     }
-    //   }
-    // }
-
-    // scrolling tile version. Speed based on character's horizontal velocity
-    // let startCol = Math.floor(this.camera.cam_x / this.outputSize);
-    // let endCol = startCol + (this.camera.width / this.outputSize);
-    // let startRow = Math.floor(this.camera.cam_y / this.outputSize);
-    // let endRow = startRow + (this.camera.height / this.outputSize);
-    // let offsetX = startCol * this.outputSize - this.camera.cam_x;
-    // let offsetY = startRow * this.outputSize - this.camera.cam_y;
-    
-    // for (let c = startCol; c <= endCol; c++) {
-    //   for (let r = startRow; r <= endRow; r++) {
-    //     let tile = this.getForegroundTile(c, r);
-    //     let [x_pos,y_pos] = this.getStartingPos(tile)
-        
-    //     let x = (c - startCol) * this.outputSize + offsetX;
-    //     let y = (r - startRow) * this.outputSize + offsetY;
-
-    //     if (tile !== 0) { // 0 => empty tile
-    //       ctx.drawImage(
-    //         this.tileAtlas, // image
-    //         x_pos, // source x
-    //         y_pos, // source y
-    //         this.sourceSize, // source width
-    //         this.sourceSize, // source height
-    //         Math.round(x),  // target x
-    //         Math.round(y), // target y
-    //         this.outputSize, // target width
-    //         this.outputSize // target height
-    //       );
-    //     }
-    //   }
-    // }
-
     let imageSpeed = 1;
 
     ctx.drawImage(this.foreground, this.foregroundImgWidth, this.dimY - 80);

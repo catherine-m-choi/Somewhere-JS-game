@@ -1,12 +1,13 @@
-class MovingObject {
+class NonSolidObject {
   constructor(params) {
-    this.game = params["game"];
     this.map = params["map"]; // current level
+    this.x_pos = params["pos"][0];
+    this.y_pos = params["pos"][1];
+    this.camera = params["camera"];
+
     this.radius = 40
     this.height = this.radius*2;      
     this.width = this.radius*2;       
-    this.x_pos = params["game"][0];
-    this.y_pos = params["game"][1];
     this.x_vel = 0; 
     this.y_vel = 0;     
     this.friction = .95
@@ -21,8 +22,6 @@ class MovingObject {
     let y = row * frameSouceHeight;
     return [x, y];
   }
-
-  draw(ctx) {}
 
   drawSpriteAnimation(ctx, image, frameCounter, frameSouceWidth, frameSouceHeight, numColSheet, targetWidth, targetHeight) {}
 
@@ -106,6 +105,17 @@ class MovingObject {
 
     }
   }
+
+  collidesWithPlayer(otherObject) {
+    let [x1, y1] = [this.x_pos, this.y_pos]
+    let [x2, y2] = [otherObject.x_pos, otherObject.y_pos]
+    let rad1 = this.radius
+    let rad2 = otherObject.radius;
+    let dist = () => {
+      return Math.sqrt((x2-x1)**2 + (y2-y1)**2)
+    }
+    return (dist() < (rad1 + rad2))
+  }
 }
 
-module.exports = MovingObject;
+module.exports = NonSolidObject;

@@ -1,6 +1,6 @@
-const MovingObject = require("../moving_object");
+const SolidObject = require("../solid_object");
 
-class Slime extends MovingObject {
+class Slime extends SolidObject {
   constructor(params) {
     super(params)
   }
