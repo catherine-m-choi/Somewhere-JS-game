@@ -14,6 +14,7 @@ class GameView {
   start() {
     this.then = Date.now();
     this.startTime = this.then;
+    this.game.currentLevel.placeCoins(this.game.currentLevel.coinPos)
     this.animate()
 
     // this.lastTime = 0;

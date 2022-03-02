@@ -1,7 +1,8 @@
 const Camera = require("../camera");
 const Coin = require("../collectibles/coin");
-const Fireball = require("../fireball");
 const TallTree = require("../non_interactive_objects/tall_tree")
+const Slime = require("../enemies/slime");
+const Fireball = require("../fireball");
 
 class TestLevel {
   constructor(dimX, dimY) {
@@ -20,8 +21,8 @@ class TestLevel {
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 16, 7, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 16, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 6, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-      13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 
+      2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+      13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 0, 0, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 
       ];
     this.foregroundTiles = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -54,33 +55,55 @@ class TestLevel {
     this.foreground = new Image();
     this.foreground.src = './src/assets/backgrounds/foreground_wave.png';
     this.foregroundImgWidth = 0;
-    this.levelCollectibles = [
-      new Coin({map: this, pos: [300,500], camera: this.camera}),
-      new Coin({map: this, pos: [340,500], camera: this.camera}), 
-      new Coin({map: this, pos: [380,500],  camera: this.camera}),
-      new Coin({map: this, pos: [580,180],  camera: this.camera}),
-      new Coin({map: this, pos: [620,180],  camera: this.camera}),
-      new Coin({map: this, pos: [660,180],  camera: this.camera}),
-      new Coin({map: this, pos: [820,220],  camera: this.camera}),
-      new Coin({map: this, pos: [845,270],  camera: this.camera}),
-      new Coin({map: this, pos: [860,320],  camera: this.camera}),
-    ];
+
+    // Coins
+    this.coinPos = [
+      [300,500], [340,500], [380,500], 
+      [580,180], [620,180], [660,180], 
+      [820,220], [845,270], [860,320], 
+      [1380,460], [1420,440], [1460,460],
+      [1800,500], [1840,500], [1880,500]
+    ]
+    this.levelCollectibles = [];
+
+    // Background objects (trees, rocks, etc)
     this.backgroundObjects = [
       new TallTree({map: this, pos: [300,382], camera: this.camera}),
       new TallTree({map: this, pos: [400,370], camera: this.camera}),
       new TallTree({map: this, pos: [1050,382], camera: this.camera})
     ];
-    this.enemies = [];
+
+    // Enemies
+    this.enemies = [
+      new Slime({map: this, pos: [1000,520], camera: this.camera}),
+      new Slime({map: this, pos: [2500,520], camera: this.camera}),
+      new Slime({map: this, pos: [4000,520], camera: this.camera}),
+    ];
     this.fireballs = [];
+  }
+
+  placeCoins(array) {
+    array.forEach((subarr) => {
+      let currMap = this;
+      let coin = new Coin({map: currMap, pos: subarr, camera: this.camera});
+      this.levelCollectibles.push(coin);
+    })
   }
 
   remove(obj) {
     if (obj instanceof Coin) {
       this.levelCollectibles.splice(this.levelCollectibles.indexOf(obj),1);
       obj.playAudio();
+    } else if (obj instanceof Fireball) {
+      this.fireballs.splice(this.fireballs.indexOf(obj),1);
     } else if (obj instanceof Enemy) {
       this.enemies.splice(this.enemies.indexOf(obj),1)
     }
+  }
+
+  // objects such as coins, enemies. Does NOT include background objects (trees, etc)
+  allInteractiveObjects() {
+    return this.levelCollectibles.concat(this.enemies);
   }
 
   getTile(col, row) {
@@ -109,6 +132,14 @@ class TestLevel {
   drawBackgroundObjects(ctx) {
     this.backgroundObjects.forEach((ele) => {
       ele.draw(ctx);
+    })
+  }
+
+  drawEnemies(ctx) {
+    this.enemies.forEach((ele) => {
+      ele.draw(ctx);
+      ele.x_pos += ele.x_vel;
+      ele.y_pos += ele.y_vel;
     })
   }
 

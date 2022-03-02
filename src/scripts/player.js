@@ -1,4 +1,5 @@
 const Coin = require("./collectibles/coin");
+const Enemy = require("./enemies/enemy");
 const Fireball = require("./fireball");
 
 class Player {
@@ -40,13 +41,15 @@ class Player {
     this.currentDyingFrame = 1;
     
     // 729 × 261 | 2 cols and 1 rows | each sprite is 364.5 x 261
-    this.maxHealth = 8;         // Temp test placeholder value
-    this.currentHealth = 5;     // Temp test placeholder value
+    this.maxHealth = 8;                      // Default placeholder value
+    this.currentHealth = this.maxHealth;    
     this.healthBar = new Image();
     this.healthBar.src = './src/assets/sprites/girl/heart_border.png';
+    this.lastDamage = Date.now() - 1000;
+    this.damageInterval = 1000;
 
     // 447 × 448
-    this.numCoins = 0 //123456789; // Temp test placeholder value
+    this.numCoins = 0
     this.coinImg = new Image();
     this.coinImg.src = './src/assets/sprites/coin/star_coin_counter.png';
   }
@@ -165,18 +168,33 @@ class Player {
     let firstEmptyHeartXPos = firstFullHeartXPos;
         
     for (let i = 0; i < emptyHealth; i++) {
-      ctx.drawImage(
-        this.healthBar, // image
-        364.5, // source x to start clipping
-        0,  // source y to start clipping
-        364.5, // source width
-        261, // source height
-        firstEmptyHeartXPos,  // target x to place on the canvas
-        20, // target y to place on the canvas
-        55, // target width
-        40 // target height
-      );
+      if (this.currentHealth === 0 && i === 0) {
+        ctx.drawImage(
+          this.healthBar, // image
+          364.5, // source x to start clipping
+          0,  // source y to start clipping
+          364.5, // source width
+          261, // source height
+          firstEmptyHeartXPos,  // target x to place on the canvas
+          20, // target y to place on the canvas
+          88, // target width
+          64 // target height
+          );
+          firstEmptyHeartXPos += 88
+      } else {
+        ctx.drawImage(
+          this.healthBar, // image
+          364.5, // source x to start clipping
+          0,  // source y to start clipping
+          364.5, // source width
+          261, // source height
+          firstEmptyHeartXPos,  // target x to place on the canvas
+          20, // target y to place on the canvas
+          55, // target width
+          40 // target height
+        );
       firstEmptyHeartXPos += 55
+      }
     }
 
   }
@@ -192,7 +210,6 @@ class Player {
 
     ctx.fillStyle = "#525252";
     ctx.fillText(this.numCoins.toLocaleString('en-US'), 155, 90)
-    // ctx.fillText(this.numCoins, x + boxWidth / 2 +  padding, y + padding + size / 2 + size / 16);
   }
 
   move(timeDelta) {
@@ -200,9 +217,6 @@ class Player {
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA;
 
     // horizontal movement
-    // offsetX = this.x_vel * velocityScale,
-    // offsetY = this.y_vel * velocityScale;
-    
     // this.x_pos += this.x_vel * velocityScale;
     this.x_pos += this.x_vel * velocityScale;
     this.x_vel *= this.friction
@@ -303,11 +317,19 @@ class Player {
       // otherObject.playAudio();
       level.remove(otherObject);
       this.numCoins += 1;
-    } 
-    // else if (otherObject instanceof Enemy) {
-    //   // otherObject.relocate();
-    //   console.log("It's an enemy!")
-    // }
+    } else if (otherObject instanceof Enemy) {
+      // otherObject.relocate();
+
+      let now = Date.now();
+      let elapsed = now - this.lastDamage;
+      if ((elapsed > this.damageInterval) && (this.jumpCount < 1)) {
+        this.lastDamage = now - (elapsed % this.damageInterval);
+
+        if (this.currentHealth >= 1) {
+          this.currentHealth -= 1;
+        } 
+      }
+    }
   }
 
   fireFireball() {
@@ -316,7 +338,7 @@ class Player {
 
     if (elapsed > this.fireballInterval) {
       this.lastFireball = now - (elapsed % this.fireballInterval);
-      let ball = new Fireball({map: this.map, pos: [this.x_pos, this.y_pos], vel: [this.x_vel, this.y_vel], camera: this.map.camera, flip: this.flip});
+      let ball = new Fireball({map: this.map, pos: [this.x_pos, this.y_pos], vel: [this.x_vel, this.y_vel], camera: this.map.camera, flip: this.flip, player: this});
       this.map.fireballs.push(ball);
     }
 

@@ -17,6 +17,8 @@ class Fireball extends SolidObject {
     this.static = (this.spriteCols === 1);
     this.currentFrameFPSCounter = 1/5;
 
+    this.camera = params["camera"];
+    this.player = params["player"];
     this.flip = !params["flip"];
     this.y_pos = params["pos"][1];
     if (this.flip) {
@@ -31,12 +33,25 @@ class Fireball extends SolidObject {
 
   drawSpriteAnimation(ctx, image, frameCounter, frameSouceWidth, frameSouceHeight, numColSheet, targetWidth, targetHeight) {
     let [tileClipX,tileClipY] = this.getStartingPos(Math.floor(frameCounter), frameSouceWidth, frameSouceHeight, numColSheet)
+    let translateX
 
+    if ((this.x_pos > (this.camera.cam_x + this.camera.width)) || (this.x_pos < this.camera.cam_x)) {
+      this.player.map.remove(this);
+    }
+    
     if (this.flip) { // flip image
+      // horizontal translation amount based on camera position
+      if (this.player.x_pos === this.player.screenX) {
+        translateX = this.x_pos + this.player.width;
+      } else if (this.x_pos < this.camera.width) {
+        translateX = this.x_pos - this.camera.cam_x + this.width
+      } else {
+        translateX = this.x_pos - this.camera.cam_x + this.width
+      }
+      
       ctx.save();
-      ctx.translate(this.x_pos + targetWidth + this.width, this.y_pos- this.radius);
+      ctx.translate(translateX, this.y_pos);
       ctx.scale(-1, 1);
-
       ctx.drawImage(
         image, // image
         tileClipX, // source x to start clipping

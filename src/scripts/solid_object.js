@@ -58,7 +58,6 @@ class SolidObject {
   draw(ctx) {
     if (this.static) {
       this.drawStaticSprite(ctx, this.img, this.width, this.height);
-      console.log(this.img)
     } else {
       if (this.currentFrame <= this.spriteCols) {
         this.currentFrame += this.currentFrameFPSCounter;

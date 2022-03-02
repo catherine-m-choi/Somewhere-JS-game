@@ -35,6 +35,7 @@ class Game {
     this.currentLevel.renderBackground(ctx, this.player.x_vel, this.player.x_pos)
     this.currentLevel.drawBackgroundObjects(ctx);
     this.currentLevel.render(ctx);
+    this.currentLevel.drawEnemies(ctx);
     this.player.draw(ctx);
     this.player.drawHealth(ctx);
     this.player.drawCoinCounter(ctx);
@@ -70,10 +71,11 @@ class Game {
   }
   
   checkCollisions(level) {
-    let collectibles = this.currentLevel.levelCollectibles  // collectibles such as coins
-    for (let i = 0; i < collectibles.length; i++) {
-      if (this.player.isCollidedWithObject(collectibles[i])) {
-        this.player.collideWithObject(collectibles[i], level)
+    let objs = this.currentLevel.allInteractiveObjects()  // coins and enemies
+    // let collectibles = this.currentLevel.levelCollectibles  // collectibles such as coins
+    for (let i = 0; i < objs.length; i++) {
+      if (this.player.isCollidedWithObject(objs[i])) {
+        this.player.collideWithObject(objs[i], level)
       }
     }
   }
