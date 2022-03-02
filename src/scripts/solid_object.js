@@ -44,7 +44,7 @@ class SolidObject {
   }
 
   drawStaticSprite(ctx, image, targetWidth, targetHeight) {
-    if ((this.x_pos > this.camera.cam_x) && (this.x_pos < (this.camera.cam_x + this.camera.width))) {
+    if ((this.x_pos > this.camera.cam_x - this.width) && (this.x_pos - this.width < (this.camera.cam_x + this.camera.width))) {
       ctx.drawImage(
         image, // image
         this.x_pos - this.camera.cam_x,  // target x to place on the canvas
@@ -57,7 +57,8 @@ class SolidObject {
 
   draw(ctx) {
     if (this.static) {
-      this.drawStaticSprite(ctx, this.img, this.spriteWidth, this.spriteHeight);
+      this.drawStaticSprite(ctx, this.img, this.width, this.height);
+      console.log(this.img)
     } else {
       if (this.currentFrame <= this.spriteCols) {
         this.currentFrame += this.currentFrameFPSCounter;

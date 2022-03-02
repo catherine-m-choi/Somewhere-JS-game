@@ -4,14 +4,15 @@ class TallTree extends SolidObject {
   constructor(params) {
     super(params)
 
-    this.height = this.radius*2;      
-    this.width = this.radius*2;   
-    
     // 128 × 192 
     this.img = new Image();
     this.img.src = './src/assets/backgrounds/forest_pack_97.png';
+    this.spriteWidth = 128;
+    this.spriteHeight = 192;
+    this.width = this.spriteWidth;
+    this.height = this.spriteHeight;
     this.spriteCols = 1;
-    this.static = (this.spriteCols === 1);
+    this.static = true;
   }
 }
 
