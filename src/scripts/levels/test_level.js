@@ -56,15 +56,31 @@ class TestLevel {
     this.levelCollectibles = [
       new Coin({map: this, pos: [300,500], camera: this.camera}),
       new Coin({map: this, pos: [340,500], camera: this.camera}), 
-      new Coin({map: this, pos: [380,500],  camera: this.camera})
+      new Coin({map: this, pos: [380,500],  camera: this.camera}),
+      new Coin({map: this, pos: [580,180],  camera: this.camera}),
+      new Coin({map: this, pos: [620,180],  camera: this.camera}),
+      new Coin({map: this, pos: [660,180],  camera: this.camera}),
+      new Coin({map: this, pos: [820,220],  camera: this.camera}),
+      new Coin({map: this, pos: [845,270],  camera: this.camera}),
+      new Coin({map: this, pos: [860,320],  camera: this.camera}),
     ];
     this.backgroundObjects = [
       new TallTree({map: this, pos: [300,382], camera: this.camera}),
       new TallTree({map: this, pos: [400,370], camera: this.camera}),
       new TallTree({map: this, pos: [1050,382], camera: this.camera})
     ];
+    this.enemies = [];
   }
   
+  remove(obj) {
+    if (obj instanceof Coin) {
+      this.levelCollectibles.splice(this.levelCollectibles.indexOf(obj),1);
+      obj.playAudio();
+    } else if (obj instanceof Enemy) {
+      this.enemies.splice(this.enemies.indexOf(obj),1)
+    }
+  }
+
   getTile(col, row) {
     return this.tiles[row * this.cols + col];
   }

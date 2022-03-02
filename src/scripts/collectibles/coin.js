@@ -14,6 +14,11 @@ class Coin extends SolidObject {
     this.currentCoinFrame = 1;
   }
 
+  playAudio() {
+    let song = document.getElementById("coin");
+    song.volume = 0.5;
+    song.play();
+  }
   draw(ctx) {
     if (this.currentCoinFrame <= 6) {
       this.currentCoinFrame += (3/12);
@@ -25,7 +30,7 @@ class Coin extends SolidObject {
   
   drawSpriteAnimation(ctx, image, frameCounter, frameSouceWidth, frameSouceHeight, numColSheet, targetWidth, targetHeight) {
     let [tileClipX,tileClipY] = this.getStartingPos(Math.floor(frameCounter), frameSouceWidth, frameSouceHeight, numColSheet)
-    if ((this.x_pos > this.camera.cam_x) && (this.x_pos < (this.camera.cam_x + this.camera.width))) {
+    if ((this.x_pos > this.camera.cam_x - this.width) && (this.x_pos - this.width < (this.camera.cam_x + this.camera.width))) {
       ctx.drawImage(
         image, // image
         tileClipX, // source x to start clipping

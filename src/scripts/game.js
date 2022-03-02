@@ -40,10 +40,12 @@ class Game {
     this.currentLevel.renderForeground(ctx);
     this.currentLevel.drawObjects(ctx);
     this.executeMoves();
+    this.checkCollisions(this.currentLevel);
   }
 
   step(delta) {
     this.player.move(delta);
+    this.checkCollisions;
   }
 
   executeMoves() {
@@ -62,6 +64,14 @@ class Game {
     })
   }
   
+  checkCollisions(level) {
+    let collectibles = this.currentLevel.levelCollectibles  // collectibles such as coins
+    for (let i = 0; i < collectibles.length; i++) {
+      if (this.player.isCollidedWithObject(collectibles[i])) {
+        this.player.collideWithObject(collectibles[i], level)
+      }
+    }
+  }
 }
 
 module.exports = Game;

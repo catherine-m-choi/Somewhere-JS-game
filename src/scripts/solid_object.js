@@ -106,7 +106,7 @@ class SolidObject {
     }
   }
 
-  collidesWithPlayer(otherObject) {
+  isCollidedWithObject(otherObject) {
     let [x1, y1] = [this.x_pos, this.y_pos]
     let [x2, y2] = [otherObject.x_pos, otherObject.y_pos]
     let rad1 = this.radius
@@ -115,6 +115,16 @@ class SolidObject {
       return Math.sqrt((x2-x1)**2 + (y2-y1)**2)
     }
     return (dist() < (rad1 + rad2))
+  }
+
+  collideWithObject(otherObject, level) {
+    // if (otherObject instanceof Coin) {
+    //   level.remove(otherObject);
+    //   this.numCoins += 1;
+    // } else if (otherObject instanceof Enemy) {
+    //   // otherObject.relocate();
+    //   console.log("It's an enemy!")
+    // }
   }
 }
 

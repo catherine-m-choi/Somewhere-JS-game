@@ -1,3 +1,5 @@
+const Coin = require("./collectibles/coin");
+
 class Player {
   constructor(params) {
     this.game = params["game"];
@@ -40,7 +42,7 @@ class Player {
     this.healthBar.src = './src/assets/sprites/girl/heart_border.png';
 
     // 447 × 448
-    this.numCoins = 123456789; // Temp test placeholder value
+    this.numCoins = 0 //123456789; // Temp test placeholder value
     this.coinImg = new Image();
     this.coinImg.src = './src/assets/sprites/coin/star_coin_counter.png';
   }
@@ -279,6 +281,29 @@ class Player {
       }
 
     }
+  }
+
+  isCollidedWithObject(otherObject) {
+    let [x1, y1] = [this.x_pos, this.y_pos]
+    let [x2, y2] = [otherObject.x_pos, otherObject.y_pos]
+    let rad1 = this.radius
+    let rad2 = otherObject.radius;
+    let dist = () => {
+      return Math.sqrt((x2-x1)**2 + (y2-y1)**2)
+    }
+    return (dist() < (rad1 + rad2))
+  }
+
+  collideWithObject(otherObject, level) {
+    if (otherObject instanceof Coin) {
+      // otherObject.playAudio();
+      level.remove(otherObject);
+      this.numCoins += 1;
+    } 
+    // else if (otherObject instanceof Enemy) {
+    //   // otherObject.relocate();
+    //   console.log("It's an enemy!")
+    // }
   }
 }
 
