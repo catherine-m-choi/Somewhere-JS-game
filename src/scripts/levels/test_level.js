@@ -1,5 +1,6 @@
 const Camera = require("../camera");
 const Coin = require("../collectibles/coin");
+const Fireball = require("../fireball");
 const TallTree = require("../non_interactive_objects/tall_tree")
 
 class TestLevel {
@@ -70,8 +71,9 @@ class TestLevel {
       new TallTree({map: this, pos: [1050,382], camera: this.camera})
     ];
     this.enemies = [];
+    this.fireballs = [];
   }
-  
+
   remove(obj) {
     if (obj instanceof Coin) {
       this.levelCollectibles.splice(this.levelCollectibles.indexOf(obj),1);
@@ -107,6 +109,13 @@ class TestLevel {
   drawBackgroundObjects(ctx) {
     this.backgroundObjects.forEach((ele) => {
       ele.draw(ctx);
+    })
+  }
+
+  drawFireballs(ctx) {
+    this.fireballs.forEach((ele) => {
+      ele.draw(ctx);
+      ele.x_pos += ele.x_vel;
     })
   }
 

@@ -1,4 +1,5 @@
 const Coin = require("./collectibles/coin");
+const Fireball = require("./fireball");
 
 class Player {
   constructor(params) {
@@ -18,6 +19,9 @@ class Player {
     
     this.friction = .95
     
+    this.lastFireball = Date.now() - 1000;
+    this.fireballInterval = 200;
+
     // sprite animations:
     this.flip = false;
     // 2080 × 1816 | 5 cols and 4 rows | each sprite is 416 x 454
@@ -304,6 +308,18 @@ class Player {
     //   // otherObject.relocate();
     //   console.log("It's an enemy!")
     // }
+  }
+
+  fireFireball() {
+    let now = Date.now();
+    let elapsed = now - this.lastFireball;
+
+    if (elapsed > this.fireballInterval) {
+      this.lastFireball = now - (elapsed % this.fireballInterval);
+      let ball = new Fireball({map: this.map, pos: [this.x_pos, this.y_pos], vel: [this.x_vel, this.y_vel], camera: this.map.camera, flip: this.flip});
+      this.map.fireballs.push(ball);
+    }
+
   }
 }
 

@@ -15,7 +15,8 @@ class Game {
       'ArrowRight' : false,
       'a': false,
       'd': false,
-      " ": false
+      " ": false,
+      "j":false
     };
 
     window.addEventListener("keydown", (e) => {
@@ -37,6 +38,7 @@ class Game {
     this.player.draw(ctx);
     this.player.drawHealth(ctx);
     this.player.drawCoinCounter(ctx);
+    this.currentLevel.drawFireballs(ctx);
     this.currentLevel.renderForeground(ctx);
     this.currentLevel.drawObjects(ctx);
     this.executeMoves();
@@ -60,6 +62,9 @@ class Game {
       }
       if (this.keys[' ']) {
         this.player.jump()
+      }
+      if (this.keys['j']) {
+        this.player.fireFireball();
       }
     })
   }
