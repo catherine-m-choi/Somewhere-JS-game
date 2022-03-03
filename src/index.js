@@ -13,17 +13,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
   g.titleMenu();
   // g.start();
 
-  document.getElementById("temp-song").loop = true;
-  document.addEventListener('play', function(element){
-    let song = document.getElementById("temp-song");
-    song.volume = 0.1;
-    song.play();
-  }, true);
-
-  document.addEventListener('pause', function(element){
-    let song = document.getElementById("temp-song");
-    song.pause();
-  }, true);
-
-
 });

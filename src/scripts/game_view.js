@@ -16,7 +16,9 @@ class GameView {
     this.fps = 60;
     this.fpsInterval = 1000 / this.fps;
     
-    this.mainSong = document.getElementById("temp-song");
+    this.mainSong = document.getElementById("main-song");
+    this.mainSong.loop = true;
+    this.mainSong.volume = 0.2;
 
     const playButton = document.getElementById("play-btn");
     const instructButton = document.getElementById("instructions-btn");
@@ -41,10 +43,10 @@ class GameView {
       instructButton.hidden = true;
       difficultyButton.hidden = true;
       menuButton.hidden = false;
-      volumeButton.hidden = false;
       reloadButton.hidden = false;
       that.start();
       that.playButtonAudio();
+      if (that.mainSong.paused) {that.mainSong.play()}
     });
 
     instructButton.addEventListener("click", function() {
@@ -105,7 +107,6 @@ class GameView {
       that.animateBool = false;
       that.titleMenu();
       menuButton.hidden = true;
-      volumeButton.hidden = true;
       reloadButton.hidden = true;
       playButton.hidden = false;
       instructButton.hidden = false;
@@ -119,7 +120,7 @@ class GameView {
 
     volumeButton.addEventListener("click", function() {
       that.playButtonAudio();
-      that.toggleSound();
+      that.toggleMainSong();
     });
   }
 
@@ -131,7 +132,6 @@ class GameView {
 
   start() {
     this.game = new Game(this.params);
-    console.log("starting...")
     this.then = Date.now();
     this.startTime = this.then;
     // Prob will refactor this to move this somewhere else.
@@ -144,7 +144,6 @@ class GameView {
   }
 
   animate(time) {
-    console.log(this.animateBool)
     if(!this.animateBool) {
       this.ctx.clearRect(0, 0, this.dimX, this.dimY);
       this.ctx = null; 
@@ -170,7 +169,7 @@ class GameView {
     song.play();
   }
 
-  toggleSound() {
+  toggleMainSong() {
     return this.mainSong.paused ? this.mainSong.play() : this.mainSong.pause();
   };
 }

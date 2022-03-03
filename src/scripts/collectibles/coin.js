@@ -20,7 +20,7 @@ class Coin extends SolidObject {
   }
 
   playAudio() {
-    let song = document.getElementById("coin");
+    let song = document.getElementById("coin-audio");
     song.volume = 0.5;
     song.play();
   }

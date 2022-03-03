@@ -314,7 +314,6 @@ class Player {
 
   collideWithObject(otherObject, level) {
     if (otherObject instanceof Coin) {
-      // otherObject.playAudio();
       level.remove(otherObject);
       this.numCoins += 1;
     } else if (otherObject instanceof Enemy) {
