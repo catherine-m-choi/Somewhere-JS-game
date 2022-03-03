@@ -72,3 +72,24 @@ Day 6
 - Add a title screen and user interface buttons
 - Include basic tutorial guidelines
 
+## Future Features
+- Refactor slime enemies to interact with tiles and obey gravity.
+- Add more enemies with varied attack patterns.
+- Add more levels
+- Add audio for fireball enemy collision.
+
+## Art and audio credits
+### Art
+- Girl sprites and candy buttons by pzUH on opengameart.org
+- Coin sprites by DanSevenStar on opengameart.org
+- Heart sprites by knik1985 on opengameart.org
+- Background and platfrom tiles by Tio Aimar on opengameart.org
+- Fireball sprites by Irina Mir (irmirx) on opengameart.org
+### Audio
+- Background music is "Good Morning" by Cakeflaps @ You're Perfect Studio
+- Coin sound by Fupi on opengameart.org
+- Button click audio by p0ss on opengameart.org
+- Game over audio by Cleyton Kauffman - https://soundcloud.com/cleytonkauffman
+### Font
+- Title font from Gaming Font Vectors by Vecteezy
+
