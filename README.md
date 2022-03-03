@@ -1,19 +1,24 @@
 # Somewhere
 
 ## Background
-_Somewhere_ is a metroidvania game, where the player controls a character through different rooms to unlock new skills that will allow them to reach new areas to explore. Players can unlock new skills, meet friends, and try new types of foods to increase their maximum health.
+_Somewhere_ is a platforming game, where the player explores different levels and defeats enemies. Players select their difficulty level.
 
 ## Functionality & MVP
 In _Somewhere_, users will be able to:
-- Start, pause, restart, and exit the game.
-- Move their character using either the W,A,S, D or Arrow keys
-- Jump with space bar and dash with the Shift key
-- Move between rooms
+- Start, restart, and exit the game.
+- Players can select their difficulty level.
+- Move their character using either the A, D or Left and Right Arrow keys
+- Jump with space bar and attack with j
+- Move between levels
 
 In addition, this project will include:
-- View the overworld map
 - View instructions from the menu
 - Allow you to mute the audio
+
+
+## Demo Gameplay
+
+https://user-images.githubusercontent.com/59376544/156654316-627e7475-41ce-4853-8baa-4397bad4c7b8.mov
 
 ## Wireframe
 
@@ -31,14 +36,11 @@ Technologies used:
 
 Architecture:
 
-- game.js will overall game logic and animation details
-- moveable_character.js will hold all logic that characters such as the player and enemies share, such as object collision and physics
+- game.js and game_view.js have the overall game logic and animation details
 - player.js handles all player based logic including control and player animations
-- monster.js handles the logic behind all the unique monsters' movement and attack pattern
-- skill.js handles the logic behind all the skills obtained by the pl!
-
-![Screen Shot 2022-02-25 at 5 28 05 PM](https://user-images.githubusercontent.com/59376544/155821844-530e2559-76f6-4076-a85e-4778de072825.png)
-
+- enemy.js handles the logic behind all the enemies movement and attack pattern
+- solid_object.js holds all logic that characters such as the player and enemies share, such as object collision and physics
+- levels.js is the parent class for all the different levels.
 
 ## Timeline
 
@@ -58,16 +60,15 @@ Day 3
 - Refactor ‘camera view’ to follow the main character
 
 Day 4
-- Add additional moves to main character (dash, wall jump, double jump)
-- Add item chest to unlock new move.
-- Add dialogue overlay for story dialogue when a new move is unlocked.
+- Add additional moves to main character
+- Add coin items.
 
 Day 5
 - Add additional rooms and work on level design. 
-- Add rooms that are not accessible without unlocking moves.
+- Add background audio and sound effects for actions.
 - Focus on styling and finishing game design touches.
 
 Day 6
-- Add a title screen
+- Add a title screen and user interface buttons
 - Include basic tutorial guidelines
-- Deploy to GitHub pages.
+
