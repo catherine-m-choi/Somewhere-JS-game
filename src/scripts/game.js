@@ -79,6 +79,16 @@ class Game {
         this.player.collideWithObject(objs[i], level)
       }
     }
+    
+    let enemies = this.currentLevel.enemies;
+    let fireballs = this.currentLevel.fireballs;
+    for (let i = 0; i < enemies.length; i++) {
+      for (let j = 0; j < fireballs.length; j++) {
+        if (enemies[i].isCollidedWithObject(fireballs[j])) {
+          enemies[i].collideWithObject(fireballs[j], level);
+        }
+      }
+    }
   }
 
 }

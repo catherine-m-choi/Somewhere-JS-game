@@ -278,7 +278,6 @@ class GameView {
       setTimeout(()=> {
         that.drawGameOver();
       }, 1520)
-      // console.log("drawing game over")
     }
   }
 
