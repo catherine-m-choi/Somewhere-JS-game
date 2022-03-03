@@ -158,7 +158,6 @@ body {
   position: absolute;
   top: 15px;
   right: 15px;
-  display: flex;
 }
 
 .game-settings-buttons img {
@@ -169,4 +168,43 @@ body {
 
 .game-settings-buttons img:hover {
   cursor: pointer;
+}
+
+// 292 wide
+// (1280 - 280) / 2
+// (1280 - 280 - 280 - 15) / 2
+.play-again-buttons {
+  // display: flex;
+  // justify-content: space-around;
+  // flex-direction: row;
+  position:absolute;
+  left: 300px;
+  top: 400px;
+  display: flex;
+  list-style: none;
+}
+
+.play-again-buttons li {
+  cursor:pointer;
+  margin: 0px auto;
+  margin-right: 25px;
+  width: 240px;
+  padding: 20px;
+  color: #313133;
+  font-family: "Trebuchet MS", Arial, Verdana;   
+  border-radius: 16px;
+  text-shadow: 1px 1px rgb(73, 73, 73); 
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  background: linear-gradient(90deg, rgb(253, 142, 127) 0%, rgb(194, 109, 106) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(136, 58, 39, 0.25);
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 1001;
+}
+
+.play-again-buttons li:hover {
+  color: #e6e6e6;
+  transform: translateY(-6px);
 }

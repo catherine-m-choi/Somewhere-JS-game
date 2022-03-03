@@ -7,7 +7,7 @@ class Game {
     this.DIM_Y = params["dim"][1];
     // this.currentLevel = new TestLevel(this.DIM_X, this.DIM_Y);
     this.currentLevel = new TestLevel(this.DIM_X, this.DIM_Y);
-    this.player = new Player({game: this, map: this.currentLevel})
+    this.player = new Player({game: this, map: this.currentLevel, difficulty: params["difficulty"]})
     this.currentLevel.camera.follow(this.player);
     // this.menu = new Menu({game: this})
 
@@ -80,6 +80,7 @@ class Game {
       }
     }
   }
+
 }
 
 module.exports = Game;

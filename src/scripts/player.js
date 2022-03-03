@@ -6,6 +6,8 @@ class Player {
   constructor(params) {
     this.game = params["game"];
     this.map = params["map"]; // current level
+    const difficulty = params["difficulty"] ??= 5
+    
     this.radius = 40
     this.height = this.radius*2;      
     this.width = this.radius*2;       
@@ -41,8 +43,8 @@ class Player {
     this.currentDyingFrame = 1;
     
     // 729 × 261 | 2 cols and 1 rows | each sprite is 364.5 x 261
-    this.maxHealth = 8;                      // Default placeholder value
-    this.currentHealth = this.maxHealth;    
+    this.maxHealth = difficulty;                      // Default placeholder value
+    this.currentHealth = difficulty;    
     this.healthBar = new Image();
     this.healthBar.src = './src/assets/sprites/girl/heart_border.png';
     this.lastDamage = Date.now() - 1000;
@@ -66,7 +68,12 @@ class Player {
 
   draw(ctx) {
     
-    if (Math.abs(this.x_vel) < 0.2) {
+    if (this.currentHealth <= 0) {
+      if (this.currentDyingFrame < 30) {
+        this.currentDyingFrame += (10/30);
+      }
+      this.drawDyingSpriteAnimation(ctx, this.girlDying, this.currentDyingFrame, 601, 502, 6, 120, 100)
+    } else if (Math.abs(this.x_vel) < 0.2) {
       if (this.currentIdlingFrame <= 16) {
         this.currentIdlingFrame += (4/16);
       } else {
@@ -94,6 +101,7 @@ class Player {
     // this.drawSpriteAnimation(ctx, this.girlDying, this.currentDyingFrame, 601, 502, 6, 120, 100)
     
   }
+  
 
   drawSpriteAnimation(ctx, image, frameCounter, frameSouceWidth, frameSouceHeight, numColSheet, targetWidth, targetHeight) {
     let [tileClipX,tileClipY] = this.getStartingPos(Math.floor(frameCounter), frameSouceWidth, frameSouceHeight, numColSheet)
@@ -124,6 +132,41 @@ class Player {
         frameSouceHeight, // source height
         this.screenX,  // target x to place on the canvas
         this.y_pos- this.radius, // target y to place on the canvas
+        targetWidth, // target width
+        targetHeight // target height
+      );
+    }
+  }
+
+  drawDyingSpriteAnimation(ctx, image, frameCounter, frameSouceWidth, frameSouceHeight, numColSheet, targetWidth, targetHeight) {
+    let [tileClipX,tileClipY] = this.getStartingPos(Math.floor(frameCounter), frameSouceWidth, frameSouceHeight, numColSheet)
+
+    if (this.flip) { // flip image
+      ctx.save();
+      ctx.translate(this.screenX + targetWidth, this.y_pos- this.radius - 10);
+      ctx.scale(-1, 1);
+
+      ctx.drawImage(
+        image, // image
+        tileClipX, // source x to start clipping
+        tileClipY,  // source y to start clipping
+        frameSouceWidth, // source width
+        frameSouceHeight, // source height
+        0,  // target x to place on the canvas
+        0, // target y to place on the canvas
+        targetWidth, // target width
+        targetHeight // target height
+        );
+      ctx.restore();
+    } else {
+      ctx.drawImage(
+        image, // image
+        tileClipX, // source x to start clipping
+        tileClipY,  // source y to start clipping
+        frameSouceWidth, // source width
+        frameSouceHeight, // source height
+        this.screenX,  // target x to place on the canvas
+        this.y_pos- this.radius - 10, // target y to place on the canvas
         targetWidth, // target width
         targetHeight // target height
       );
