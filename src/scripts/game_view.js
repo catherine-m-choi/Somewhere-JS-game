@@ -13,10 +13,14 @@ class GameView {
     this.fpsInterval = 1000 / this.fps;
 
     const playButton = document.getElementById("play-btn");
-    const instructButton = document.getElementById("instructions-btn");
     const optionsButton = document.getElementById("options-btn");
+    const instructButton = document.getElementById("instructions-btn");
+    const returnMenuButton = document.getElementById("return-to-menu");
     const that = this;
   
+    const instructionBox = document.getElementById("instructions-text");
+    instructionBox.style["background-image"] = "url(./src/assets/menu/instructions.png)"
+
     playButton.addEventListener("click", function() {
       playButton.hidden = !playButton.hidden;
       instructButton.hidden = !instructButton.hidden;
@@ -25,9 +29,26 @@ class GameView {
     });
 
     instructButton.addEventListener("click", function() {
+      playButton.hidden = !playButton.hidden;
+      instructButton.hidden = !instructButton.hidden;
+      optionsButton.hidden = !optionsButton.hidden;
+      // that.menu.showInstructions();
+      instructionBox.hidden = !instructionBox.hidden;
+      returnMenuButton.hidden = !returnMenuButton.hidden;
     });
 
     optionsButton.addEventListener("click", function() {
+      playButton.hidden = !playButton.hidden;
+      instructButton.hidden = !instructButton.hidden;
+      optionsButton.hidden = !optionsButton.hidden;
+    });
+
+    returnMenuButton.addEventListener("click", function() {
+      playButton.hidden = !playButton.hidden;
+      instructButton.hidden = !instructButton.hidden;
+      optionsButton.hidden = !optionsButton.hidden;
+      instructionBox.hidden = !instructionBox.hidden;
+      returnMenuButton.hidden = !returnMenuButton.hidden;
     });
   }
 
