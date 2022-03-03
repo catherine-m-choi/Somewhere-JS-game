@@ -266,7 +266,7 @@ class GameView {
     this.ctx.globalAlpha = 0.3;
     this.ctx.fillRect(0,0,this.dimX,this.dimY);
     this.ctx.globalAlpha = 1.0;
-    // this.playGameAudio();
+    this.playGameAudio();
     
     let that = this;
     let bindCtx = this.ctx;

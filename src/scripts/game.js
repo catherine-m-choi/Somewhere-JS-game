@@ -14,8 +14,8 @@ class Game {
     // ]
     this.levels = [
       TestLevel,
-      Snow,
-      Desert
+      Desert,
+      Snow
     ]
     // this.currentLevel = this.levels[0];
     this.currentLevel = new this.levels[0](this.DIM_X, this.DIM_Y)

@@ -1,7 +1,8 @@
 const Level = require("./level");
-const TallCactus = require("../non_interactive_objects/desert_cactus_tall")
-const ShortCactus = require("../non_interactive_objects/desert_cactus_short")
-const DesertBush = require("../non_interactive_objects/desert_bush")
+const SnowBush = require("../non_interactive_objects/snow_bush");
+const Snowman = require("../non_interactive_objects/snowman");
+const SnowTreeShort = require("../non_interactive_objects/snow_tree_short");
+const SnowTreeTall = require("../non_interactive_objects/snow_tree_tall");
 const Slime = require("../enemies/slime");
 
 class Snow extends Level {
@@ -65,10 +66,13 @@ class Snow extends Level {
 
     // Background objects (trees, rocks, etc)
     this.backgroundObjects = [
-      new ShortCactus({map: this, pos: [300,432], camera: this.camera}),
-      new TallCactus({map: this, pos: [400,430], camera: this.camera}),
-      new TallCactus({map: this, pos: [1050,442], camera: this.camera}),
-      new DesertBush({map: this, pos: [850,432], camera: this.camera}),
+      new SnowTreeShort({map: this, pos: [300,368], camera: this.camera}),
+      new SnowTreeTall({map: this, pos: [400,304], camera: this.camera}),
+      new SnowTreeShort({map: this, pos: [500,368], camera: this.camera}),
+      new SnowTreeShort({map: this, pos: [1050,368], camera: this.camera}),
+      new Snowman({map: this, pos: [850,432], camera: this.camera}),
+      new SnowBush({map: this, pos: [1600,432], camera: this.camera}),
+      new Snowman({map: this, pos: [850,432], camera: this.camera}),
     ];
 
     // Enemies
