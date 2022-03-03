@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./src/assets/menu/girl_title.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
     <title>Somewhere Javascript Game</title>
   </head>
 
-  <body>
+  <body scroll="no" style="overflow: hidden">
 
     <div class="canvas-container">
       <canvas id="game-canvas" width="1280" height="720"></canvas>
@@ -35,6 +36,17 @@
         </ul>
       </nav>
 
+      <div class="social-buttons">
+        <a href="https://catherine-m-choi.github.io/Somewhere-JS-game/"><img src="./src/assets/icons/github_icon_white.png" alt="Github icon"></a>
+        <a href="https://www.linkedin.com/in/catherine-margaret-choi/"><img src="./src/assets/icons/linkedin_icon_white.png" alt="LinkedIn icon"></a>
+      </div>
+
+      <div class="game-settings-buttons">
+        <img id="menu-btn" src="./src/assets/menu/home_button.png" alt="Menu button" hidden>
+        <img id="volume-btn" src="./src/assets/menu/sound_button.png" alt="Sound button" hidden>
+        <img id="reload-btn" src="./src/assets/menu/reload_button.png" alt="Reload button" hidden>
+      </div>
+      
     </div>
 
 

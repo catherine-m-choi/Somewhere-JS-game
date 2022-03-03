@@ -138,3 +138,35 @@ body {
   color: #e6e6e6;
   transform: translateY(-6px);
 }
+
+.social-buttons {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  display: flex;
+}
+
+.social-buttons img {
+  margin-right: 10px;
+  width: 34px;
+  height: 34px;
+}
+
+.game-settings-buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+}
+
+.game-settings-buttons img {
+  margin-bottom: 10px;
+  width: 45px;
+  height: 45px;
+}
+
+.game-settings-buttons img:hover {
+  cursor: pointer;
+}

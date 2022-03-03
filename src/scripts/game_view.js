@@ -2,15 +2,21 @@ const Game = require("./game.js");
 const Menu = require("./menu");
 
 class GameView {
-  constructor(gameOptions) {
-    this.game = new Game(gameOptions);
-    this.menu = new Menu(gameOptions);
+  constructor(params) {
+    // this.game = new Game(params);
+    this.params = params
+    this.dimX = params["dim"][0];
+    this.dimY = params["dim"][1];
+    this.menu = new Menu(params);
     this.ctx = ctx;
+    this.animateBool = true;
 
     this.stop = false;
     this.frameCount = 0;
     this.fps = 60;
     this.fpsInterval = 1000 / this.fps;
+    
+    this.mainSong = document.getElementById("temp-song");
 
     const playButton = document.getElementById("play-btn");
     const instructButton = document.getElementById("instructions-btn");
@@ -19,6 +25,9 @@ class GameView {
     const easyButton = document.getElementById("easy-btn");
     const mediumButton = document.getElementById("medium-btn");
     const hardButton = document.getElementById("hard-btn");
+    const menuButton = document.getElementById("menu-btn");
+    const volumeButton = document.getElementById("volume-btn");
+    const reloadButton = document.getElementById("reload-btn");
     const that = this;
   
     const instructionBox = document.getElementById("instructions-text");
@@ -31,6 +40,9 @@ class GameView {
       playButton.hidden = true;
       instructButton.hidden = true;
       difficultyButton.hidden = true;
+      menuButton.hidden = false;
+      volumeButton.hidden = false;
+      reloadButton.hidden = false;
       that.start();
       that.playButtonAudio();
     });
@@ -87,6 +99,28 @@ class GameView {
       that.game.player.currentHealth = 1;
       that.playButtonAudio();
     });
+
+    menuButton.addEventListener("click", function() {
+      that.playButtonAudio();
+      that.animateBool = false;
+      that.titleMenu();
+      menuButton.hidden = true;
+      volumeButton.hidden = true;
+      reloadButton.hidden = true;
+      playButton.hidden = false;
+      instructButton.hidden = false;
+      difficultyButton.hidden = false;
+    });
+
+    reloadButton.addEventListener("click", function() {
+      that.playButtonAudio();
+      that.start();
+    });
+
+    volumeButton.addEventListener("click", function() {
+      that.playButtonAudio();
+      that.toggleSound();
+    });
   }
 
   titleMenu() {
@@ -96,15 +130,27 @@ class GameView {
   }
 
   start() {
+    this.game = new Game(this.params);
     console.log("starting...")
     this.then = Date.now();
     this.startTime = this.then;
     // Prob will refactor this to move this somewhere else.
     this.game.currentLevel.placeCoins(this.game.currentLevel.coinPos)
+
+    this.ctx = document.getElementById("game-canvas").getContext("2d")
+    this.animateBool = true;
+    
     this.animate()
   }
 
   animate(time) {
+    console.log(this.animateBool)
+    if(!this.animateBool) {
+      this.ctx.clearRect(0, 0, this.dimX, this.dimY);
+      this.ctx = null; 
+      return;
+    }
+
     requestAnimationFrame(this.animate.bind(this));
 
     this.now = Date.now();
@@ -115,7 +161,6 @@ class GameView {
 
       this.game.step(elapsed);
       this.game.draw(this.ctx);
-      // this.menu.drawTitleScreen(this.ctx);
     }
   }
 
@@ -124,6 +169,10 @@ class GameView {
     song.volume = 0.5;
     song.play();
   }
+
+  toggleSound() {
+    return this.mainSong.paused ? this.mainSong.play() : this.mainSong.pause();
+  };
 }
 
 module.exports = GameView;
