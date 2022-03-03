@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
-  <link rel="stylesheet" href="./dist/main.css" />
-  <script src="./dist/main.js"></script>
-  <title>Somewhere</title>
-</head>
-<body>
-  <h1>Somewhere...</h1>
-  <canvas id="game-canvas" width="1280" height="720"></canvas>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/main.css" />
+    <script src="./dist/main.js"></script>
+    <title>Somewhere</title>
+  </head>
 
-  <div class="audio-buttons">
-    <button onclick="document.getElementById('temp-song').play()" type="button">Play Audio</button>
-    <button onclick="document.getElementById('temp-song').pause()" type="button">Pause Audio</button>
-  </div>
+  <body>
+    <h1>Somewhere...</h1>
 
-  <audio id="temp-song" src="./src/assets/audio/cakeflaps_good_morning.wav">Your browser does not support the audio element.</audio>
-  <audio id="coin" src="./src/assets/audio/coin.wav">Your browser does not support the audio element.</audio>
-  
-</body>
+    <div class="canvas-container">
+      <canvas id="game-canvas" width="1280" height="720"></canvas>
+
+      <nav>
+        <ul class="menu-buttons">
+          <li id="play-btn">Play</li>
+          <li id="instructions-btn">Instructions</li>
+          <li id="options-btn">Options</li>
+        </ul>
+      </nav>
+    </div>
+
+
+    <div class="audio-buttons">
+      <button onclick="document.getElementById('temp-song').play()" type="button">Play Audio</button>
+      <button onclick="document.getElementById('temp-song').pause()" type="button">Pause Audio</button>
+    </div>
+
+    <audio id="temp-song" src="./src/assets/audio/cakeflaps_good_morning.wav">Your browser does not support the audio element.</audio>
+    <audio id="coin" src="./src/assets/audio/coin.wav">Your browser does not support the audio element.</audio>
+    
+  </body>
 </html>

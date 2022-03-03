@@ -2,13 +2,14 @@ const Player = require("./player");
 const TestLevel = require("./levels/test_level");
 
 class Game {
-  constructor(options) {
-    this.DIM_X = options["dim"][0];
-    this.DIM_Y = options["dim"][1];
+  constructor(params) {
+    this.DIM_X = params["dim"][0];
+    this.DIM_Y = params["dim"][1];
     // this.currentLevel = new TestLevel(this.DIM_X, this.DIM_Y);
     this.currentLevel = new TestLevel(this.DIM_X, this.DIM_Y);
     this.player = new Player({game: this, map: this.currentLevel})
     this.currentLevel.camera.follow(this.player);
+    // this.menu = new Menu({game: this})
 
     this.keys = {
       'ArrowLeft' : false,

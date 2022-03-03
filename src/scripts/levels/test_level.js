@@ -211,9 +211,9 @@ class TestLevel {
     }
 
     //image 1
-    ctx.drawImage(this.background, this.imgWidth, -40);
+    ctx.drawImage(this.background, this.imgWidth, 0);
     //image2
-    ctx.drawImage(this.background, this.imgWidth + this.dimX, -40);
+    ctx.drawImage(this.background, this.imgWidth + this.dimX, 0);
     this.imgWidth -= imageSpeed
   
     // reseting the images when the first image entirely exits the screen
