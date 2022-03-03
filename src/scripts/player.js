@@ -90,15 +90,6 @@ class Player {
     }
 
     this.map.camera.update();
-
-    // Need to add another if condition to draw dying sprite animation. Will need to check against player's health
-    // if (this.currentDyingFrame <= 30) {
-    //   this.currentDyingFrame += (10/30);
-    // }
-    // else {
-    //   this.currentDyingFrame = 1;
-    // }
-    // this.drawSpriteAnimation(ctx, this.girlDying, this.currentDyingFrame, 601, 502, 6, 120, 100)
     
   }
   

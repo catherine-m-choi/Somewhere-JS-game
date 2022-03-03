@@ -1,7 +1,5 @@
 const Camera = require("../camera");
 const Coin = require("../collectibles/coin");
-const TallTree = require("../non_interactive_objects/tall_tree")
-const Slime = require("../enemies/slime");
 const Fireball = require("../fireball");
 const Enemy = require("../enemies/enemy");
 
@@ -14,6 +12,9 @@ class Level {
     this.rows = 9;
     this.sourceSize = 128;
     this.outputSize = 80;
+
+    this.levelWidth = this.cols * this.outputSize;
+
     this.tiles = [];
     this.foregroundTiles = []
 
@@ -21,22 +22,6 @@ class Level {
     this.dimX = dimX;
     this.dimY = dimY;
     this.camera = new Camera(this.cols, this.rows, this.outputSize, dimX, dimY);
-    
-    // this.inputRows = 3;
-    // this.inputCols = 7;
-    // this.tileAtlas = new Image();
-    // this.tileAtlas.src = './src/assets/tiles/forest_tiles.png';
-    
-    // // Image for background rendering
-    // this.background = new Image();
-    // this.background.src = './src/assets/backgrounds/bg_forest.png';
-    // this.imgWidth = 0;
-    
-
-    // // Image for foreground rendering
-    // this.foreground = new Image();
-    // this.foreground.src = './src/assets/backgrounds/foreground_wave.png';
-    // this.foregroundImgWidth = 0;
 
     // Coins
     this.coinPos = []

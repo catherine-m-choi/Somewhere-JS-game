@@ -91,22 +91,16 @@ class GameView {
     });
 
     easyButton.addEventListener("click", function() {
-      // that.game.player.maxHealth = 10;
-      // that.game.player.currentHealth = 10;
       that.params["difficulty"] = 10;
       that.playButtonAudio();
     });
 
     mediumButton.addEventListener("click", function() {
-      // that.game.player.maxHealth = 5;
-      // that.game.player.currentHealth = 5;
       that.params["difficulty"] = 5;
       that.playButtonAudio();
     });
 
     hardButton.addEventListener("click", function() {
-      // that.game.player.maxHealth = 1;
-      // that.game.player.currentHealth = 1;
       that.params["difficulty"] = 1;
       that.playButtonAudio();
     });
@@ -131,7 +125,7 @@ class GameView {
 
     reloadButton.addEventListener("click", function() {
       that.playButtonAudio();
-      this.animateBool = true;
+      that.animateBool = true;
       yesPlayButton.hidden = true;
       noPlayButton.hidden = true;
       that.start();
@@ -145,7 +139,9 @@ class GameView {
 
     yesPlayButton.addEventListener("click", function() {
       that.playButtonAudio();
-      this.animateBool = true;
+      let canvas = document.getElementById("game-canvas");
+      that.ctx = canvas.getContext("2d"); // Maybe?
+      that.animateBool = true;
       yesPlayButton.hidden = true;
       noPlayButton.hidden = true;
       that.start();
@@ -177,6 +173,10 @@ class GameView {
     // 390 × 106 || Center x pos is (this.dimX - 834) / 2 = 445
     this.playAgainImg = new Image();
     this.playAgainImg.src = './src/assets/game_over/play_again.png';
+
+    // 1280 × 720
+    this.winImg = new Image();
+    this.winImg.src = './src/assets/game_over/win_image.png';
   }
 
   clearCanvas() {
@@ -219,6 +219,7 @@ class GameView {
       this.game.step(elapsed);
       this.game.draw(this.ctx);
       this.checkOutOfBounds();
+      this.checkNextLevel();
       this.checkAlive();
     }
   }
@@ -239,13 +240,33 @@ class GameView {
     }
   } 
 
+  checkNextLevel() {
+    if (this.game.player.x_pos >= this.game.currentLevel.levelWidth) {
+      this.game.player.x_pos = 400;
+      this.game.player.y_pos = 100;
+
+      if (this.game.currentLevelIndex + 1 < this.game.levels.length) {
+        this.game.currentLevelIndex += 1;
+        this.game.currentLevel = new this.game.levels[this.game.currentLevelIndex](this.dimX, this.dimY)
+        this.game.player.map = this.game.currentLevel;
+        this.game.currentLevel.camera.cam_x = 0;
+        this.game.currentLevel.camera.cam_y = 0;
+        this.game.player.screenX = 400;
+        this.game.player.screenY = 100;
+        this.game.currentLevel.camera.follow(this.game.player);
+      } else {
+        this.drawWin();
+      }
+    }
+  } 
+
   drawGameOver() {
     this.animateBool = false;
     this.clearScreen = false;
     this.ctx.globalAlpha = 0.3;
     this.ctx.fillRect(0,0,this.dimX,this.dimY);
     this.ctx.globalAlpha = 1.0;
-    this.playGameAudio();
+    // this.playGameAudio();
     
     let that = this;
     let bindCtx = this.ctx;
@@ -262,6 +283,14 @@ class GameView {
       yesPlayButton.hidden = false;
       noPlayButton.hidden = false;
     }, 1000);
+  }
+
+  drawWin() {
+    this.animateBool = false;
+    this.clearScreen = false;
+
+    this.ctx.clearRect(0, 0, this.dimX, this.dimX);
+    this.ctx.drawImage(this.winImg, 0, 0);
   }
 
   playGameAudio() {

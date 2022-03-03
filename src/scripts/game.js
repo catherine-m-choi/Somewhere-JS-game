@@ -1,12 +1,25 @@
 const Player = require("./player");
 const TestLevel = require("./levels/test_level");
+const Desert = require("./levels/desert_level");
+const Snow = require("./levels/snow_level");
 
 class Game {
   constructor(params) {
     this.DIM_X = params["dim"][0];
     this.DIM_Y = params["dim"][1];
     // this.currentLevel = new TestLevel(this.DIM_X, this.DIM_Y);
-    this.currentLevel = new TestLevel(this.DIM_X, this.DIM_Y);
+    // this.levels = [
+    //   new TestLevel(this.DIM_X, this.DIM_Y),
+    //   new TestLevel(this.DIM_X, this.DIM_Y)
+    // ]
+    this.levels = [
+      TestLevel,
+      Snow,
+      Desert
+    ]
+    // this.currentLevel = this.levels[0];
+    this.currentLevel = new this.levels[0](this.DIM_X, this.DIM_Y)
+    this.currentLevelIndex = 0;
     this.player = new Player({game: this, map: this.currentLevel, difficulty: params["difficulty"]})
     this.currentLevel.camera.follow(this.player);
     // this.menu = new Menu({game: this})

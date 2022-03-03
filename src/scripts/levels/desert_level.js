@@ -1,13 +1,15 @@
 const Level = require("./level");
-const TallTree = require("../non_interactive_objects/forest_tree_tall")
+const TallCactus = require("../non_interactive_objects/desert_cactus_tall")
+const ShortCactus = require("../non_interactive_objects/desert_cactus_short")
+const DesertBush = require("../non_interactive_objects/desert_bush")
 const Slime = require("../enemies/slime");
 
-class TestLevel extends Level {
+class Desert extends Level {
   constructor(dimX, dimY) {
     super(dimX, dimY)
 
     // Canvas size is 1280 x 720
-    // forest_tiles.png is 896 × 384; Individual tile is 128 x 128 in source
+    // desert_tiles.png is 640 × 512; Individual tile is 128 x 128 in source
     // Screen is 16 tiles wide and 9 tiles high, with tile size of 80 x 80
     this.cols = 46;
     this.rows = 9;
@@ -37,14 +39,14 @@ class TestLevel extends Level {
       20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20
     ]
     
-    this.inputRows = 3;
-    this.inputCols = 7;
+    this.inputRows = 4;
+    this.inputCols = 5;
     this.tileAtlas = new Image();
-    this.tileAtlas.src = './src/assets/tiles/forest_tiles.png';
+    this.tileAtlas.src = './src/assets/tiles/desert_tiles.png';
 
     // Image for background rendering
     this.background = new Image();
-    this.background.src = './src/assets/backgrounds/bg_forest.png';
+    this.background.src = './src/assets/backgrounds/bg_desert.png';
     this.imgWidth = 0;
 
     // Image for foreground rendering
@@ -63,9 +65,10 @@ class TestLevel extends Level {
 
     // Background objects (trees, rocks, etc)
     this.backgroundObjects = [
-      new TallTree({map: this, pos: [300,382], camera: this.camera}),
-      new TallTree({map: this, pos: [400,370], camera: this.camera}),
-      new TallTree({map: this, pos: [1050,382], camera: this.camera})
+      new ShortCactus({map: this, pos: [300,432], camera: this.camera}),
+      new TallCactus({map: this, pos: [400,430], camera: this.camera}),
+      new TallCactus({map: this, pos: [1050,442], camera: this.camera}),
+      new DesertBush({map: this, pos: [850,432], camera: this.camera}),
     ];
 
     // Enemies
@@ -77,4 +80,4 @@ class TestLevel extends Level {
   }
 }
 
-module.exports = TestLevel;
+module.exports = Desert;
