@@ -13,42 +13,79 @@ class GameView {
     this.fpsInterval = 1000 / this.fps;
 
     const playButton = document.getElementById("play-btn");
-    const optionsButton = document.getElementById("options-btn");
     const instructButton = document.getElementById("instructions-btn");
+    const difficultyButton = document.getElementById("difficulty-btn");
     const returnMenuButton = document.getElementById("return-to-menu");
+    const easyButton = document.getElementById("easy-btn");
+    const mediumButton = document.getElementById("medium-btn");
+    const hardButton = document.getElementById("hard-btn");
     const that = this;
   
     const instructionBox = document.getElementById("instructions-text");
-    instructionBox.style["background-image"] = "url(./src/assets/menu/instructions.png)"
+    instructionBox.style["background-image"] = "url(./src/assets/menu/instructions_no_banner.png)"
+
+    const difficultyBox = document.getElementById("difficulty-select");
+    difficultyBox.style["background-image"] = "url(./src/assets/menu/difficulty_banner.png)"
 
     playButton.addEventListener("click", function() {
-      playButton.hidden = !playButton.hidden;
-      instructButton.hidden = !instructButton.hidden;
-      optionsButton.hidden = !optionsButton.hidden;
+      playButton.hidden = true;
+      instructButton.hidden = true;
+      difficultyButton.hidden = true;
       that.start();
+      that.playButtonAudio();
     });
 
     instructButton.addEventListener("click", function() {
-      playButton.hidden = !playButton.hidden;
-      instructButton.hidden = !instructButton.hidden;
-      optionsButton.hidden = !optionsButton.hidden;
-      // that.menu.showInstructions();
-      instructionBox.hidden = !instructionBox.hidden;
-      returnMenuButton.hidden = !returnMenuButton.hidden;
+      playButton.hidden = true;
+      instructButton.hidden = true;
+      difficultyButton.hidden = true;
+      instructionBox.hidden = false;
+      returnMenuButton.hidden = false;
+      that.playButtonAudio();
     });
 
-    optionsButton.addEventListener("click", function() {
-      playButton.hidden = !playButton.hidden;
-      instructButton.hidden = !instructButton.hidden;
-      optionsButton.hidden = !optionsButton.hidden;
+    difficultyButton.addEventListener("click", function() {
+      playButton.hidden = true;
+      instructButton.hidden = true;
+      difficultyButton.hidden = true;
+      difficultyBox.hidden = false;
+      returnMenuButton.hidden = false;
+
+      easyButton.hidden = false;
+      mediumButton.hidden = false;
+      hardButton.hidden = false;
+      that.playButtonAudio();
     });
 
     returnMenuButton.addEventListener("click", function() {
-      playButton.hidden = !playButton.hidden;
-      instructButton.hidden = !instructButton.hidden;
-      optionsButton.hidden = !optionsButton.hidden;
-      instructionBox.hidden = !instructionBox.hidden;
-      returnMenuButton.hidden = !returnMenuButton.hidden;
+      playButton.hidden = false;
+      instructButton.hidden = false;
+      difficultyButton.hidden = false;
+      difficultyBox.hidden = true;
+      instructionBox.hidden = true;
+      returnMenuButton.hidden = true;
+      easyButton.hidden = true;
+      mediumButton.hidden = true;
+      hardButton.hidden = true;
+      that.playButtonAudio();
+    });
+
+    easyButton.addEventListener("click", function() {
+      that.game.player.maxHealth = 10;
+      that.game.player.currentHealth = 10;
+      that.playButtonAudio();
+    });
+
+    mediumButton.addEventListener("click", function() {
+      that.game.player.maxHealth = 5;
+      that.game.player.currentHealth = 5;
+      that.playButtonAudio();
+    });
+
+    hardButton.addEventListener("click", function() {
+      that.game.player.maxHealth = 1;
+      that.game.player.currentHealth = 1;
+      that.playButtonAudio();
     });
   }
 
@@ -80,6 +117,12 @@ class GameView {
       this.game.draw(this.ctx);
       // this.menu.drawTitleScreen(this.ctx);
     }
+  }
+
+  playButtonAudio() {
+    let song = document.getElementById("button-audio");
+    song.volume = 0.5;
+    song.play();
   }
 }
 
