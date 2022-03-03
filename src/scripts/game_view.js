@@ -254,6 +254,7 @@ class GameView {
         this.game.player.screenX = 400;
         this.game.player.screenY = 100;
         this.game.currentLevel.camera.follow(this.game.player);
+        this.game.currentLevel.placeCoins(this.game.currentLevel.coinPos);
       } else {
         this.drawWin();
       }
