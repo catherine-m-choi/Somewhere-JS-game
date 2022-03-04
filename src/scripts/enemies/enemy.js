@@ -9,15 +9,6 @@ class Enemy extends SolidObject {
     this.fireballInterval = 800;
   }
 
-  // collideWith(otherObject) {
-  //   if (otherObject instanceof Fireball) {
-  //     // remove fireball: 
-  //     this.map.remove(otherObject);
-  //     // remove enemy: 
-  //     this.map.remove(this);
-  //   }
-  // }
-
   isCollidedWithObject(otherObject) {
     let [x1, y1] = [this.x_pos, this.y_pos]
     let [x2, y2] = [otherObject.x_pos, otherObject.y_pos]
