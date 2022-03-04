@@ -242,17 +242,17 @@ class GameView {
 
   checkNextLevel() {
     if (this.game.player.x_pos >= this.game.currentLevel.levelWidth) {
-      this.game.player.x_pos = 400;
-      this.game.player.y_pos = 100;
+      this.game.player.x_pos = 0;
+      // this.game.player.y_pos = 100;
 
       if (this.game.currentLevelIndex + 1 < this.game.levels.length) {
         this.game.currentLevelIndex += 1;
         this.game.currentLevel = new this.game.levels[this.game.currentLevelIndex](this.dimX, this.dimY)
         this.game.player.map = this.game.currentLevel;
         this.game.currentLevel.camera.cam_x = 0;
-        this.game.currentLevel.camera.cam_y = 0;
-        this.game.player.screenX = 400;
-        this.game.player.screenY = 100;
+        // this.game.currentLevel.camera.cam_y = 0;
+        this.game.player.screenX = 0;
+        // this.game.player.screenY = 100;
         this.game.currentLevel.camera.follow(this.game.player);
         this.game.currentLevel.placeCoins(this.game.currentLevel.coinPos);
       } else {
