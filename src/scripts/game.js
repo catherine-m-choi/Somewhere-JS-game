@@ -94,8 +94,8 @@ class Game {
     }
     
     let enemies = this.currentLevel.enemies;
-    let fireballs = this.currentLevel.fireballs;
     for (let i = 0; i < enemies.length; i++) {
+      let fireballs = this.currentLevel.fireballs;
       for (let j = 0; j < fireballs.length; j++) {
         if (enemies[i].isCollidedWithObject(fireballs[j])) {
           enemies[i].collideWithObject(fireballs[j], level);

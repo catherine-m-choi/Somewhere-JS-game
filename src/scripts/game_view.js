@@ -199,7 +199,7 @@ class GameView {
     this.animate()
   }
 
-  animate(time) {
+  animate() {
     if(!this.animateBool) {
       if (this.clearScreen) {
         this.ctx.clearRect(0, 0, this.dimX, this.dimY);

@@ -25,13 +25,12 @@ class Enemy extends SolidObject {
       // For enemy damage later: 
       let now = Date.now();
       let elapsed = now - this.lastEnemyDamage;
+      level.remove(otherObject);
       if (elapsed > this.fireballInterval) {
-        level.remove(otherObject);
         this.lastEnemyDamage = now - (elapsed % this.fireballInterval);
 
         if (this.health >= 1) {
           this.health -= 1;
-          console.log("fireball hit enemy, -1 damage!")
         } 
         
         if (this.health <= 0) {
