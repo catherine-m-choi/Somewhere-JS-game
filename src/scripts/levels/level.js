@@ -28,10 +28,10 @@ class Level {
     this.coinPos = []
     this.levelCollectibles = [];
 
-    this.nextLevelSign = new NextLevelSign({map: this, pos: [this.dimX,400], camera: this.camera})
+    this.nextLevelSign = new NextLevelSign({map: this, pos: [this.levelWidth - 300,400], camera: this.camera})
 
     // Background objects (trees, rocks, etc)
-    this.backgroundObjects = [this.nextLevelSign];
+    this.backgroundObjects = [];
 
     // Enemies
     this.enemies = [];

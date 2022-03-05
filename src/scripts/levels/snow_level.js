@@ -4,6 +4,7 @@ import Snowman from "../non_interactive_objects/snowman";
 import SnowTreeShort from "../non_interactive_objects/snow_tree_short";
 import SnowTreeTall from "../non_interactive_objects/snow_tree_tall";
 import Slime from "../enemies/slime";
+import NextLevelSign from "../non_interactive_objects/next_level_sign";
 
 class Snow extends Level {
   constructor(dimX, dimY) {
@@ -77,6 +78,7 @@ class Snow extends Level {
       new Snowman({map: this, pos: [850,432], camera: this.camera}),
       new SnowBush({map: this, pos: [1600,432], camera: this.camera}),
       new Snowman({map: this, pos: [850,432], camera: this.camera}),
+      this.nextLevelSign
     ];
 
     // Enemies
@@ -88,4 +90,4 @@ class Snow extends Level {
   }
 }
 
-export default Slime;
+export default Snow;

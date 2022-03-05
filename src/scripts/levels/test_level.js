@@ -1,6 +1,7 @@
 import Level from "./level";
 import TallTree from "../non_interactive_objects/forest_tree_tall"
-import Slime from "./snow_level";
+import Slime from "../enemies/slime";
+import NextLevelSign from "../non_interactive_objects/next_level_sign";
 
 class TestLevel extends Level {
   constructor(dimX, dimY) {
@@ -75,7 +76,8 @@ class TestLevel extends Level {
       new TallTree({map: this, pos: [2550,382], camera: this.camera}),
       new TallTree({map: this, pos: [2800,382], camera: this.camera}),
       new TallTree({map: this, pos: [2900,370], camera: this.camera}),
-      new TallTree({map: this, pos: [3550,382], camera: this.camera})
+      new TallTree({map: this, pos: [3550,382], camera: this.camera}),
+      this.nextLevelSign
     ]);
 
     // Enemies

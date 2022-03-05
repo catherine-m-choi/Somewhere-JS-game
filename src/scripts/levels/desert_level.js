@@ -3,6 +3,7 @@ import TallCactus from "../non_interactive_objects/desert_cactus_tall";
 import ShortCactus from "../non_interactive_objects/desert_cactus_short";
 import DesertBush from "../non_interactive_objects/desert_bush";
 import Slime from "../enemies/slime";
+import NextLevelSign from "../non_interactive_objects/next_level_sign";
 
 class Desert extends Level {
   constructor(dimX, dimY) {
@@ -77,6 +78,7 @@ class Desert extends Level {
 
       new ShortCactus({map: this, pos: [3400,432], camera: this.camera}),
       new TallCactus({map: this, pos: [3500,430], camera: this.camera}),
+      this.nextLevelSign
     ];
 
     // Enemies

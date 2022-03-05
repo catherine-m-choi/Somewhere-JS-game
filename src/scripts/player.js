@@ -246,7 +246,7 @@ class Player {
   }
 
   move(timeDelta) {
-    const NORMAL_FRAME_TIME_DELTA = 100 //1000 / 60;
+    const NORMAL_FRAME_TIME_DELTA = 600 //1000 / 60;
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA;
 
     // horizontal movement
