@@ -1,1 +1,209 @@
-body{background-color:#fff8dc}h1{font-family:Verdana,Geneva,Tahoma,sans-serif}body{display:block;text-align:center}.canvas-container{padding:0;margin:auto;position:relative;width:1280px;height:720px}.game-canvas{display:block;position:absolute}.menu-buttons{position:absolute;right:22%;top:40%;display:flex;flex-direction:column;justify-content:space-around;list-style:none}.menu-buttons li{cursor:pointer;margin:0px auto;margin-top:20px;width:200px;padding:20px;color:#313133;font-family:"Trebuchet MS",Arial,Verdana;border-radius:16px;text-shadow:1px 1px #494949;text-transform:uppercase;letter-spacing:1.3px;background:linear-gradient(90deg, #73d3c6 0%, #50ccc0 100%);border:none;border-radius:1000px;box-shadow:12px 12px 24px rgba(39,136,126,.64);transition:all .3s ease-in-out 0s;z-index:1001}.menu-buttons li:hover,#return-to-menu:hover{color:#e6e6e6;transform:translateY(-6px)}#instructions-text{position:absolute;right:13%;top:40%;color:#d9d9d9;margin:0 auto;width:465px;height:358px}#difficulty-select{position:absolute;right:13%;top:37%;color:#d9d9d9;margin:0 auto;width:470px;height:375px}#return-to-menu{cursor:pointer;position:absolute;right:22%;bottom:8%;margin:0px auto;margin-top:20px;width:200px;padding:20px;color:#313133;font-family:"Trebuchet MS",Arial,Verdana;border-radius:16px;text-shadow:1px 1px #494949;text-transform:uppercase;letter-spacing:1.3px;background:linear-gradient(90deg, #73d3c6 0%, #50ccc0 100%);border:none;border-radius:1000px;box-shadow:12px 12px 24px rgba(32,83,78,.25);transition:all .3s ease-in-out 0s;z-index:1001}.difficulty-buttons{position:absolute;right:21%;top:49%;display:flex;flex-direction:column;justify-content:space-around;list-style:none}.difficulty-buttons li{cursor:pointer;margin:0px auto;margin-top:12px;width:250px;padding:15px;color:#313133;font-family:"Trebuchet MS",Arial,Verdana;border-radius:16px;text-shadow:1px 1px #494949;text-transform:uppercase;letter-spacing:1.3px;background:linear-gradient(90deg, #d37e73 0%, #b4615e 100%);border:none;border-radius:1000px;box-shadow:12px 12px 24px rgba(136,58,39,.25);transition:all .3s ease-in-out 0s;z-index:1001}.difficulty-buttons li:hover,#return-to-menu:hover{color:#e6e6e6;transform:translateY(-6px)}.social-buttons{position:absolute;left:15px;bottom:15px;display:flex}.social-buttons img{margin-right:10px;width:34px;height:34px}.game-settings-buttons{display:flex;flex-direction:column;position:absolute;top:15px;right:15px}.game-settings-buttons img{margin-bottom:10px;width:45px;height:45px}.game-settings-buttons img:hover{cursor:pointer}.play-again-buttons{position:absolute;left:300px;top:400px;display:flex;list-style:none}.play-again-buttons li{cursor:pointer;margin:0px auto;margin-right:25px;width:240px;padding:20px;color:#313133;font-family:"Trebuchet MS",Arial,Verdana;border-radius:16px;text-shadow:1px 1px #494949;text-transform:uppercase;letter-spacing:1.3px;background:linear-gradient(90deg, #fd8e7f 0%, #c26d6a 100%);border:none;border-radius:1000px;box-shadow:12px 12px 24px rgba(136,58,39,.25);transition:all .3s ease-in-out 0s;z-index:1001}.play-again-buttons li:hover{color:#e6e6e6;transform:translateY(-6px)}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+body {
+  background-color: cornsilk;
+}
+
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: block;
+  text-align: center;
+}
+
+.canvas-container {
+  padding: 0;
+  margin: auto;
+  position: relative;
+  width: 1280px;
+  height: 720px;
+}
+
+.game-canvas {
+  display: block;
+  position: absolute;
+}
+
+.menu-buttons {
+  position: absolute;
+  right: 22%;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.menu-buttons li {
+  cursor: pointer;
+  margin: 0px auto;
+  margin-top: 20px;
+  width: 200px;
+  padding: 20px;
+  color: #313133;
+  font-family: "Trebuchet MS", Arial, Verdana;
+  border-radius: 16px;
+  text-shadow: 1px 1px #494949;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  background: linear-gradient(90deg, #73d3c6 0%, #50ccc0 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(39, 136, 126, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 1001;
+}
+
+.menu-buttons li:hover, #return-to-menu:hover {
+  color: #e6e6e6;
+  transform: translateY(-6px);
+}
+
+#instructions-text {
+  position: absolute;
+  right: 13%;
+  top: 40%;
+  color: #d9d9d9;
+  margin: 0 auto;
+  width: 465px;
+  height: 358px;
+}
+
+#difficulty-select {
+  position: absolute;
+  right: 13%;
+  top: 37%;
+  color: #d9d9d9;
+  margin: 0 auto;
+  width: 470px;
+  height: 375px;
+}
+
+#return-to-menu {
+  cursor: pointer;
+  position: absolute;
+  right: 22%;
+  bottom: 8%;
+  margin: 0px auto;
+  margin-top: 20px;
+  width: 200px;
+  padding: 20px;
+  color: #313133;
+  font-family: "Trebuchet MS", Arial, Verdana;
+  border-radius: 16px;
+  text-shadow: 1px 1px #494949;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  background: linear-gradient(90deg, #73d3c6 0%, #50ccc0 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(32, 83, 78, 0.25);
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 1001;
+}
+
+.difficulty-buttons {
+  position: absolute;
+  right: 21%;
+  top: 49%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.difficulty-buttons li {
+  cursor: pointer;
+  margin: 0px auto;
+  margin-top: 12px;
+  width: 250px;
+  padding: 15px;
+  color: #313133;
+  font-family: "Trebuchet MS", Arial, Verdana;
+  border-radius: 16px;
+  text-shadow: 1px 1px #494949;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  background: linear-gradient(90deg, #d37e73 0%, #b4615e 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(136, 58, 39, 0.25);
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 1001;
+}
+
+.difficulty-buttons li:hover, #return-to-menu:hover {
+  color: #e6e6e6;
+  transform: translateY(-6px);
+}
+
+.social-buttons {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  display: flex;
+}
+
+.social-buttons img {
+  margin-right: 10px;
+  width: 34px;
+  height: 34px;
+}
+
+.game-settings-buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.game-settings-buttons img {
+  margin-bottom: 10px;
+  width: 45px;
+  height: 45px;
+}
+
+.game-settings-buttons img:hover {
+  cursor: pointer;
+}
+
+.play-again-buttons {
+  position: absolute;
+  left: 300px;
+  top: 400px;
+  display: flex;
+  list-style: none;
+}
+
+.play-again-buttons li {
+  cursor: pointer;
+  margin: 0px auto;
+  margin-right: 25px;
+  width: 240px;
+  padding: 20px;
+  color: #313133;
+  font-family: "Trebuchet MS", Arial, Verdana;
+  border-radius: 16px;
+  text-shadow: 1px 1px #494949;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  background: linear-gradient(90deg, #fd8e7f 0%, #c26d6a 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(136, 58, 39, 0.25);
+  transition: all 0.3s ease-in-out 0s;
+  z-index: 1001;
+}
+
+.play-again-buttons li:hover {
+  color: #e6e6e6;
+  transform: translateY(-6px);
+}
+
+#game-canvas {
+  border-radius: 25px;
+}

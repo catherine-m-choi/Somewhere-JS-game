@@ -1,4 +1,4 @@
-const SolidObject = require("../solid_object");
+import SolidObject from "../solid_object";
 
 class SnowTreeTall extends SolidObject {
   constructor(params) {
@@ -16,4 +16,4 @@ class SnowTreeTall extends SolidObject {
   }
 }
 
-module.exports = SnowTreeTall;
+export default SnowTreeTall;

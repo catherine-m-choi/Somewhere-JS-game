@@ -1,4 +1,4 @@
-const SolidObject = require("../solid_object");
+import SolidObject from "../solid_object";
 
 class Snowman extends SolidObject {
   constructor(params) {
@@ -16,4 +16,4 @@ class Snowman extends SolidObject {
   }
 }
 
-module.exports = Snowman;
+export default Snowman;

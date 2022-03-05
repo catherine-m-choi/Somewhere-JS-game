@@ -1,4 +1,4 @@
-const Enemy = require("./enemy");
+import Enemy from "./enemy";
 
 class Slime extends Enemy {
   constructor(params) {
@@ -28,4 +28,4 @@ class Slime extends Enemy {
 
 }
 
-module.exports = Slime;
+export default Slime;

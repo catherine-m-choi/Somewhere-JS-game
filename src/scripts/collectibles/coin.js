@@ -1,4 +1,4 @@
-const SolidObject = require("../solid_object");
+import SolidObject from "../solid_object";
 
 class Coin extends SolidObject {
   constructor(params) {
@@ -27,4 +27,4 @@ class Coin extends SolidObject {
   
 }
 
-module.exports = Coin;
+export default Coin;

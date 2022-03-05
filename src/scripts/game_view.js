@@ -1,9 +1,8 @@
-const Game = require("./game.js");
-const Menu = require("./menu");
+import Game from "./game.js";
+import Menu from "./menu";
 
 class GameView {
   constructor(params) {
-    // this.game = new Game(params);
     this.params = params
     this.dimX = params["dim"][0];
     this.dimY = params["dim"][1];
@@ -313,4 +312,4 @@ class GameView {
 
 }
 
-module.exports = GameView;
+export default GameView;

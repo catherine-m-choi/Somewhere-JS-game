@@ -1,5 +1,5 @@
-const Fireball = require("../fireball");
-const SolidObject = require("../solid_object");
+import Fireball from "../fireball";
+import SolidObject from "../solid_object";
 
 class Enemy extends SolidObject {
   constructor(params) {
@@ -22,7 +22,6 @@ class Enemy extends SolidObject {
 
   collideWithObject(otherObject, level) {
     if (otherObject instanceof Fireball) {
-      // For enemy damage later: 
       let now = Date.now();
       let elapsed = now - this.lastEnemyDamage;
       level.remove(otherObject);
@@ -41,4 +40,4 @@ class Enemy extends SolidObject {
   }
 }
 
-module.exports = Enemy;
+export default Enemy;

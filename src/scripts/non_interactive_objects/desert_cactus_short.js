@@ -1,4 +1,4 @@
-const SolidObject = require("../solid_object");
+import SolidObject from "../solid_object";
 
 class ShortCactus extends SolidObject {
   constructor(params) {
@@ -16,4 +16,4 @@ class ShortCactus extends SolidObject {
   }
 }
 
-module.exports = ShortCactus;
+export default ShortCactus;

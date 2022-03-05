@@ -1,4 +1,4 @@
-const SolidObject = require("../solid_object");
+import SolidObject from "../solid_object";
 
 class DesertBush extends SolidObject {
   constructor(params) {
@@ -16,4 +16,4 @@ class DesertBush extends SolidObject {
   }
 }
 
-module.exports = DesertBush;
+export default DesertBush;

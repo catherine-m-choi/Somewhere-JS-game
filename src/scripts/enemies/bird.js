@@ -1,4 +1,4 @@
-const Enemy = require("./enemy");
+import Enemy from "./enemy";
 
 class Bird extends Enemy {
   constructor(params) {
@@ -25,4 +25,4 @@ class Bird extends Enemy {
 
 }
 
-module.exports = Bird;
+export default Bird;

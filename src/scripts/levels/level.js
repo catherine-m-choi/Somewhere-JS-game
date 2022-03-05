@@ -1,7 +1,8 @@
-const Camera = require("../camera");
-const Coin = require("../collectibles/coin");
-const Fireball = require("../fireball");
-const Enemy = require("../enemies/enemy");
+import Camera from "../camera";
+import Coin from "../collectibles/coin";
+import Fireball from "../fireball";
+import Enemy from "../enemies/enemy";
+import NextLevelSign from "../non_interactive_objects/next_level_sign";
 
 class Level {
   constructor(dimX, dimY) {
@@ -27,12 +28,15 @@ class Level {
     this.coinPos = []
     this.levelCollectibles = [];
 
+    this.nextLevelSign = new NextLevelSign({map: this, pos: [this.dimX,400], camera: this.camera})
+
     // Background objects (trees, rocks, etc)
-    this.backgroundObjects = [];
+    this.backgroundObjects = [this.nextLevelSign];
 
     // Enemies
     this.enemies = [];
     this.fireballs = [];
+
   }
 
   placeCoins(array) {
@@ -175,7 +179,6 @@ class Level {
     }
   }
 
-  // Tested collision using pos 0, 560 (when the floor starts)
   solidTile(xPos, yPos) {
     let tileMapCol = Math.floor(xPos / this.outputSize);
     let tileMapRow = Math.floor(yPos / this.outputSize);
@@ -198,4 +201,4 @@ class Level {
 
 }
 
-module.exports = Level;
+export default Level;

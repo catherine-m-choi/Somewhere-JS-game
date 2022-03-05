@@ -1,6 +1,6 @@
-const Coin = require("./collectibles/coin");
-const Enemy = require("./enemies/enemy");
-const Fireball = require("./fireball");
+import Coin from "./collectibles/coin";
+import Enemy from "./enemies/enemy";
+import Fireball from "./fireball";
 
 class Player {
   constructor(params) {
@@ -12,12 +12,11 @@ class Player {
     this.height = this.radius*2;      
     this.width = this.radius*2;       
     this.jumpCount = 0;    // For checking jump. If currently jumping (jumpCount > 1), cannot jump again/
-    //For adding in double jump. If
     this.lastJump = Date.now() - 1000;
     this.jumpInterval = 400;
-    this.x_pos = 100;      // temporary starting x_pos for demo
-    this.y_pos = 100;      // temporary starting y_pos for demo
-    this.x_vel = 0;     // set upper and bottom limit later
+    this.x_pos = 100;      
+    this.y_pos = 100;      
+    this.x_vel = 0; 
     this.y_vel = 0;     
     
     this.friction = .95
@@ -43,7 +42,7 @@ class Player {
     this.currentDyingFrame = 1;
     
     // 729 × 261 | 2 cols and 1 rows | each sprite is 364.5 x 261
-    this.maxHealth = difficulty;                      // Default placeholder value
+    this.maxHealth = difficulty; 
     this.currentHealth = difficulty;    
     this.healthBar = new Image();
     this.healthBar.src = './src/assets/sprites/girl/heart_border.png';
@@ -247,14 +246,12 @@ class Player {
   }
 
   move(timeDelta) {
-    const NORMAL_FRAME_TIME_DELTA = 1000000 //1200 / 60;
+    const NORMAL_FRAME_TIME_DELTA = 100 //1000 / 60;
     const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA;
 
     // horizontal movement
-    // this.x_pos += this.x_vel * velocityScale;
     this.x_pos += this.x_vel * velocityScale;
     this.x_vel *= this.friction
-    this.x_pos += this.x_vel
     
     // vertical movement
     this.y_pos += this.y_vel * velocityScale;
@@ -378,4 +375,4 @@ class Player {
   }
 }
 
-module.exports = Player;
+export default Player;

@@ -1,5 +1,6 @@
+import GameView from "./scripts/game_view.js"
+
 window.addEventListener('DOMContentLoaded', (event) => {
-  const GameView = require("./scripts/game_view.js");
   window.GameView = GameView;
 
   window.canvasEl = document.getElementById("game-canvas");
@@ -11,7 +12,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const g = new GameView(gameOptions)
   g.titleMenu();
-  // g.start();
-
 
 });

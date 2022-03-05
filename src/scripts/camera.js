@@ -35,9 +35,8 @@ class Camera {
     if (this.following.x_pos > (this.maxX + this.width / 3)) {
       this.following.screenX = this.following.x_pos - this.maxX;
     }
-    // Will add up and down camera positioning later
   }
 
 }
 
-module.exports = Camera;
+export default Camera;

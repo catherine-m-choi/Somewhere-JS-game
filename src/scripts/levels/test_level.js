@@ -1,6 +1,6 @@
-const Level = require("./level");
-const TallTree = require("../non_interactive_objects/forest_tree_tall")
-const Slime = require("../enemies/slime");
+import Level from "./level";
+import TallTree from "../non_interactive_objects/forest_tree_tall"
+import Slime from "./snow_level";
 
 class TestLevel extends Level {
   constructor(dimX, dimY) {
@@ -65,7 +65,7 @@ class TestLevel extends Level {
     ]
 
     // Background objects (trees, rocks, etc)
-    this.backgroundObjects = [
+    this.backgroundObjects = this.backgroundObjects.concat([
       new TallTree({map: this, pos: [300,382], camera: this.camera}),
       new TallTree({map: this, pos: [400,370], camera: this.camera}),
       new TallTree({map: this, pos: [1050,382], camera: this.camera}),
@@ -76,7 +76,7 @@ class TestLevel extends Level {
       new TallTree({map: this, pos: [2800,382], camera: this.camera}),
       new TallTree({map: this, pos: [2900,370], camera: this.camera}),
       new TallTree({map: this, pos: [3550,382], camera: this.camera})
-    ];
+    ]);
 
     // Enemies
     this.enemies = [
@@ -87,4 +87,4 @@ class TestLevel extends Level {
   }
 }
 
-module.exports = TestLevel;
+export default TestLevel;

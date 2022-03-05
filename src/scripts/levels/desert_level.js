@@ -1,8 +1,8 @@
-const Level = require("./level");
-const TallCactus = require("../non_interactive_objects/desert_cactus_tall")
-const ShortCactus = require("../non_interactive_objects/desert_cactus_short")
-const DesertBush = require("../non_interactive_objects/desert_bush")
-const Slime = require("../enemies/slime");
+import Level from "./level";
+import TallCactus from "../non_interactive_objects/desert_cactus_tall";
+import ShortCactus from "../non_interactive_objects/desert_cactus_short";
+import DesertBush from "../non_interactive_objects/desert_bush";
+import Slime from "../enemies/slime";
 
 class Desert extends Level {
   constructor(dimX, dimY) {
@@ -88,4 +88,4 @@ class Desert extends Level {
   }
 }
 
-module.exports = Desert;
+export default Desert;

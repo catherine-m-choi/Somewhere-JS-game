@@ -1,4 +1,4 @@
-const SolidObject = require("./solid_object");
+import SolidObject from "./solid_object";
 
 class Fireball extends SolidObject {
   constructor(params) {
@@ -82,4 +82,4 @@ class Fireball extends SolidObject {
   
 }
 
-module.exports = Fireball;
+export default Fireball;
