@@ -15,6 +15,8 @@ class GameView {
     this.frameCount = 0;
     this.fps = 60;
     this.fpsInterval = 1000 / this.fps;
+
+    // this.audioPlaying = true;
     
     this.mainSong = document.getElementById("main-song");
     this.mainSong.loop = true;

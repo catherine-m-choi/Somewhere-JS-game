@@ -9,7 +9,7 @@ class Game {
     this.DIM_X = params["dim"][0];
     this.DIM_Y = params["dim"][1];
     this.levels = [
-      TestLevel,
+      // TestLevel,
       Forest,
       Snow,
       Desert
