@@ -261,21 +261,26 @@ class GameView {
   } 
 
   drawGameOver() {
-    this.animateBool = false;
-    this.clearScreen = false;
-    this.ctx.globalAlpha = 0.3;
-    this.ctx.fillRect(0,0,this.dimX,this.dimY);
-    this.ctx.globalAlpha = 1.0;
-    this.playGameAudio();
     
     let that = this;
     let bindCtx = this.ctx;
     setTimeout(() => {
-      // center x pos 223
-      bindCtx.drawImage(this.gameOverImg, 223, 120);
-      // center x pos 445
-      bindCtx.drawImage(this.playAgainImg, 445, 300);
-      that.clearScreen = false;
+      this.animateBool = false;
+      this.clearScreen = false;
+
+      if (this.ctx) {
+        this.playGameAudio();
+
+        this.ctx.globalAlpha = 0.3;
+        this.ctx.fillRect(0,0,this.dimX,this.dimY);
+        this.ctx.globalAlpha = 1.0;
+
+        // center x pos 223
+        bindCtx.drawImage(this.gameOverImg, 223, 120);
+        // center x pos 445
+        bindCtx.drawImage(this.playAgainImg, 445, 300);
+        that.clearScreen = false;
+      }
 
       const yesPlayButton = document.getElementById("yes-play-btn");
       const noPlayButton = document.getElementById("no-play-btn");

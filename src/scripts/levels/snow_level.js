@@ -4,7 +4,6 @@ import Snowman from "../non_interactive_objects/snowman";
 import SnowTreeShort from "../non_interactive_objects/snow_tree_short";
 import SnowTreeTall from "../non_interactive_objects/snow_tree_tall";
 import Slime from "../enemies/slime";
-import NextLevelSign from "../non_interactive_objects/next_level_sign";
 
 class Snow extends Level {
   constructor(dimX, dimY) {

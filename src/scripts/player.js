@@ -13,13 +13,14 @@ class Player {
     this.width = this.radius*2;       
     this.jumpCount = 0;    // For checking jump. If currently jumping (jumpCount > 1), cannot jump again/
     this.lastJump = Date.now() - 1000;
-    this.jumpInterval = 400;
+    this.jumpInterval = 700;
     this.x_pos = 100;      
     this.y_pos = 100;      
     this.x_vel = 0; 
     this.y_vel = 0;     
     
-    this.friction = .95
+    this.friction = .95;
+    this.airResistance = .92;
     
     this.lastFireball = Date.now() - 1000;
     this.fireballInterval = 200;
@@ -251,18 +252,18 @@ class Player {
 
     // horizontal movement
     this.x_pos += this.x_vel * velocityScale;
-    this.x_vel *= this.friction
+    this.x_vel *= this.friction;
     
     // vertical movement
-    this.y_pos += this.y_vel * velocityScale;
+    this.y_pos += this.y_vel;
 
     // gravity?
-    this.y_vel += 1.5
-    this.y_vel *= this.friction
-    this.y_pos += this.y_vel
+    this.y_vel += 1.0
+    this.y_vel *= this.airResistance;
+    this.y_pos += this.y_vel;
 
     // collision detection
-    this.collideWithTile(this.x_vel, this.y_vel)
+    this.collideWithTile(this.x_vel, this.y_vel);
   }
 
   moveHorizontal(dir) {
@@ -280,56 +281,64 @@ class Player {
 
     if ((elapsed > this.jumpInterval) && (this.jumpCount < 1)) {
       this.lastJump = now - (elapsed % this.jumpInterval);
-      this.y_vel -= 30 ;
+      this.y_vel -= 20;
+      this.x_vel *= 1.1; // propel forward when jumping
       this.jumping = true;
       this.jumpCount += 1;
     }
   }
 
   collideWithTile(dirX, dirY) {
+
+    
     let left = this.x_pos + this.radius;
     let right = this.x_pos + 1.5*this.radius;
-    let top = this.y_pos //- this.radius;
+    let top = this.y_pos;
     let bottom = this.y_pos + this.radius;
-
-    // check for collisions on sprite sides
-    let collision =
-    this.map.solidTile(left, top) || // left
-    this.map.solidTile(right, top) || // right
-    this.map.solidTile(right, bottom) || // top
-    this.map.solidTile(left, bottom);   //bottom
     
-    if (collision) { 
-      
-      // Going down into tile
-      if (dirY > 0) {
-        let row = this.map.getRowCol(bottom + 1);
-        this.y_pos = -this.radius + this.map.getNum(row);
-        this.y_vel = 0;
-        this.jumping = false;
-        this.jumpCount = 0;
-      }
-      
-      // Going up into tile
-      else if (dirY < 0) {
-        let row = this.map.getRowCol(top);
-        this.y_pos = this.radius + this.map.getNum(row + 1);
-        // this.y_pos = this.radius + this.map.getNum(row + 1) - (this.map.outputSize/2);
-      }
-      
-      // Going right into tile
-      else if (dirX > 0) {
-        let col = this.map.getRowCol(right);
-        this.x_pos = -this.radius + this.map.getNum(col);
-      }
-      
-      // Going right into tile
-      else if (dirX < 0) {
-        let col = this.map.getRowCol(left);
-        this.x_pos = this.radius + this.map.getNum(col + 1);
-      }
-
+    // check for collisions on sprite sides
+    let bottomCollision =
+    this.map.solidTile(left, bottom) || this.map.solidTile(right, bottom);
+    
+    let topCollision =
+    this.map.solidTile(left, top) || this.map.solidTile(right, top);
+    
+    let leftCollision = 
+    this.map.solidTile(this.x_pos - 1, top)
+    
+    let rightCollision = 
+    this.map.solidTile(this.x_pos + this.width - 1, top)
+    
+    if (bottomCollision) { 
+      let row = this.map.getRowCol(bottom);
+      this.y_pos = -this.radius + this.map.getNum(row);
+      this.y_vel = 0;
+      this.jumping = false;
+      this.jumpCount = 0;
     }
+    
+    // Going up into tile
+    else if (topCollision) {
+      let row = this.map.getRowCol(top);
+      this.y_pos = this.radius + this.map.getNum(row + 1);
+    }
+
+    // Don't check horizontal collisions at end of the level
+    if (this.x_pos > (this.map.levelWidth - this.width)) {
+      return;
+      console.log("yo")
+    }
+
+    if (rightCollision && (this.x_pos + 1.5*this.radius) < this.map.levelWidth) {
+      let col = this.map.getRowCol(this.x_pos + this.radius);
+      this.x_pos = this.map.getNum(col);
+    }
+
+    else if (leftCollision) {
+      let col = this.map.getRowCol(this.x_pos -  this.radius);
+      this.x_pos = this.map.getNum(col) + this.width;
+    }
+
   }
 
   isCollidedWithObject(otherObject) {

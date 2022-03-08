@@ -1,5 +1,6 @@
 import Player from "./player";
 import TestLevel from "./levels/test_level";
+import Forest from "./levels/forest_level"
 import Desert from "./levels/desert_level";
 import Snow from "./levels/snow_level";
 
@@ -9,6 +10,7 @@ class Game {
     this.DIM_Y = params["dim"][1];
     this.levels = [
       TestLevel,
+      Forest,
       Snow,
       Desert
     ]
@@ -90,7 +92,7 @@ class Game {
     for (let i = 0; i < enemies.length; i++) {
       let fireballs = this.currentLevel.fireballs;
       for (let j = 0; j < fireballs.length; j++) {
-        if (enemies[i].isCollidedWithObject(fireballs[j])) {
+        if (enemies[i] && enemies[i].isCollidedWithObject(fireballs[j])) {
           enemies[i].collideWithObject(fireballs[j], level);
         }
       }

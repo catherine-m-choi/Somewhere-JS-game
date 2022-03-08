@@ -3,7 +3,6 @@ import TallCactus from "../non_interactive_objects/desert_cactus_tall";
 import ShortCactus from "../non_interactive_objects/desert_cactus_short";
 import DesertBush from "../non_interactive_objects/desert_bush";
 import Slime from "../enemies/slime";
-import NextLevelSign from "../non_interactive_objects/next_level_sign";
 
 class Desert extends Level {
   constructor(dimX, dimY) {
